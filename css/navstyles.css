@@ -1,0 +1,57 @@
+/* Navbar personalizada: asegurar que los estilos no se mezclen con Bootstrap */
+.navbar.custom-navbar {
+  background-color: #ffffff; /* Fondo blanco (puedes cambiarlo) */
+  padding: 0.5rem 1rem; /* Ajuste de padding si es necesario */
+}
+
+/* Estilo para los enlaces dentro de la navbar */
+.navbar.custom-navbar .nav-link {
+  font-family: 'Arial', sans-serif; /* Tipografía de los enlaces */
+  font-weight: 600; /* Negrita */
+  font-size: 1rem; /* Tamaño de la fuente */
+  color: var(--color-primario) !important; /* Color primario */
+  padding: 0.5rem 1rem; /* Ajuste del padding */
+  text-decoration: none; /* Quitar subrayado predeterminado */
+}
+
+/* Hover y focus para los enlaces */
+.navbar.custom-navbar .nav-link:hover,
+.navbar.custom-navbar .nav-link:focus,
+.navbar.custom-navbar .nav-link.active {
+  color: var(--color-secundario) !important; /* Cambio de color al pasar el mouse */
+  text-decoration: underline; /* Subrayado al hacer hover */
+}
+
+/* Quitar iconos de la navbar */
+.navbar.custom-navbar .nav-link i {
+  display: none;
+}
+
+/* Estilo para el botón de modo oscuro en la navbar */
+.navbar.custom-navbar #btnTheme {
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  color: var(--color-primario);
+  border-color: var(--color-primario);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar.custom-navbar #btnTheme:hover {
+  background-color: var(--color-primario);
+  color: var(--color-texto-claro);
+}
+
+/* Modificación de la navbar en modo oscuro (opcional) */
+[data-theme="dark"] .navbar.custom-navbar {
+  background-color: #001b33 !important; /* Fondo oscuro en modo oscuro */
+}
+
+[data-theme="dark"] .navbar.custom-navbar .nav-link {
+  color: var(--color-secundario) !important; /* Color claro para los enlaces en modo oscuro */
+}
+
+[data-theme="dark"] .navbar.custom-navbar .nav-link:hover,
+[data-theme="dark"] .navbar.custom-navbar .nav-link:focus {
+  color: var(--color-primario) !important; /* Color primario al hacer hover en modo oscuro */
+}
+

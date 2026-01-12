@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ASECONSEVI - Plataforma Institucional</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body>
+   <!-- Navbar con menú desplegable -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+
+          <!-- Quiénes Somos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-people-fill me-1"></i>Quiénes somos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
+              <li><a class="dropdown-item" href="/html/historia.html">Historia</a></li>
+              <li><a class="dropdown-item" href="/html/misión.html">Misión, Visión y Valores</a></li>
+              <li><a class="dropdown-item" href="/html/Junta.directiva.html">Junta Directiva</a></li>
+              <li><a class="dropdown-item" href="/html/comite.html">Comités</a></li>
+              <li><a class="dropdown-item" href="/html/contactos.html">Contactos</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item" href="/html/Tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/admin/login.html"><i class="bi bi-shield-lock-fill me-1"></i>Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Spacer to offset fixed navbar -->
+  <div style="height: 70px;"></div>
+
+  <!-- Hero / Banner -->
+<header id="inicio" class="hero-section text-center position-relative">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative py-5" style="z-index:10;">
+    <h1 class="display-4 fw-bold mb-3 animate-fade-in text-white">
+      Bienvenido a <span class="text-light">ASECONSEVI</span>
+    </h1>
+    <p class="lead mx-auto mb-4 animate-fade-in text-white-50" style="max-width: 750px; font-size: 1.25rem;">
+      Comprometidos con la transparencia y el bienestar de nuestros afiliados mediante servicios confiables y profesionales.
+    </p>
+    <a href="https://autogestion.quarzo.com/Aseconsevi.GL/paginas/portada/login.aspx" class="btn btn-hero animate-fade-in">
+      <i class="bi bi-arrow-right-circle-fill me-2"></i> Realizar Trámite
+    </a>
+  </div>
+</header>
+
+<!-- Sección Quiénes Somos -->
+<section class="about-section container my-5 py-5">
+  <div class="row align-items-center g-4">
+    <div class="col-lg-6">
+      <div class="about-card p-4 shadow-lg rounded-4">
+        <h2 class="fw-bold mb-4" style="color:#0d3b66;">¿Quiénes Somos?</h2>
+        <p>
+          La <strong>Asociación ASECONSEVI</strong> promueve el desarrollo integral y el bienestar de sus afiliados, fomentando la ética, la solidaridad y la innovación institucional.
+        </p>
+        <p>
+          Nuestro equipo profesional ofrece servicios eficientes y cercanos, orientados a fortalecer la confianza y transparencia de la organización.
+        </p>
+        <p>
+          Nos guiamos por valores sólidos que nos posicionan como una institución confiable y comprometida.
+        </p>
+        <a href="/html/misión.html" class="btn btn-outline-about mt-3">
+          <i class="bi bi-info-circle me-2"></i> Conoce más
+        </a>
+      </div>
+    </div>
+    <div class="col-lg-6 text-center">
+      <img src="/img/img2.jpg" alt="Equipo ASECONSEVI" 
+           class="img-fluid rounded-4 shadow-lg about-img" />
+    </div>
+  </div>
+</section>
+
+<!-- Estilos -->
+<style>
+/* Hero */
+.hero-section {
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,50,0.6);
+  backdrop-filter: blur(2px);
+}
+.hero-section h1, .hero-section p {
+  text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+/* Botón Hero elegante */
+.btn-hero {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #0d3b66, #1a5276);
+  border: none;
+  border-radius: 50px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  transition: all 0.3s ease;
+}
+.btn-hero:hover {
+  background: linear-gradient(135deg, #1a5276, #0d3b66);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.35);
+}
+
+/* Sección Quiénes Somos */
+.about-card {
+  background: #ffffffcc; /* blanco semi-transparente */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+.about-card h2 {
+  position: relative;
+}
+.about-card h2::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: #0d3b66;
+  border-radius: 2px;
+}
+.about-card p {
+  color: #2c3e50;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.btn-outline-about {
+  color: #0d3b66;
+  border: 2px solid #0d3b66;
+  border-radius: 50px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+.btn-outline-about:hover {
+  background-color: #0d3b66;
+  color: #fff;
+  transform: translateY(-2px) scale(1.02);
+}
+
+/* Imagen del About */
+.about-img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about-img:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+}
+</style>
+
+
+  <!-- Servicios -->
+  <section id="servicios" class="bg-light py-5">
+    <div class="container">
+      <h2 class="mb-4 text-primary fw-bold">Servicios</h2>
+      <div class="d-flex flex-wrap align-items-center justify-content-between mb-4 gap-3">
+        <p class="mb-0 fw-semibold">Filtrar servicios por categoría:</p>
+        <select id="filterServices" class="form-select w-auto" aria-label="Filtro de servicios">
+          <option value="all" selected>Todos</option>
+          <option value="administrativo">Administrativos</option>
+          <option value="informativo">Informativos</option>
+          <option value="social">Sociales</option>
+        </select>
+      </div>
+      <div class="row g-4" id="servicesGrid" aria-live="polite" aria-atomic="true">
+        <div class="col-md-6 col-lg-4 service-card" data-category="administrativo" tabindex="0">
+          <div class="card h-100 shadow-sm border-primary border-2 rounded-4 service-hover">
+            <div class="card-body d-flex flex-column">
+              <div class="mb-3 text-primary fs-2 text-center"><i class="bi bi-file-earmark-check"></i></div>
+              <h5 class="card-title fw-bold">Afiliaciones</h5>
+              <p class="card-text flex-grow-1">
+                Gestión de altas, bajas y actualizaciones de afiliados con soporte personalizado y seguimiento continuo.
+              </p>
+              <a href="" class="btn btn-outline-primary mt-3 align-self-start">
+                <i class="bi bi-arrow-right-circle me-1"></i>Solicitar trámite
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 service-card" data-category="informativo" tabindex="0">
+          <div class="card h-100 shadow-sm border-success border-2 rounded-4 service-hover">
+            <div class="card-body d-flex flex-column">
+              <div class="mb-3 text-success fs-2 text-center"><i class="bi bi-people-fill"></i></div>
+              <h5 class="card-title fw-bold">Asesoría Legal</h5>
+              <p class="card-text flex-grow-1">
+                Consultas especializadas sobre derechos, beneficios y procedimientos legales para afiliados.
+              </p>
+              <a href="#contacto" class="btn btn-outline-success mt-3 align-self-start">
+                <i class="bi bi-chat-dots me-1"></i>Contactar asesor
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-4 service-card" data-category="social" tabindex="0">
+          <div class="card h-100 shadow-sm border-warning border-2 rounded-4 service-hover">
+            <div class="card-body d-flex flex-column">
+              <div class="mb-3 text-warning fs-2 text-center"><i class="bi bi-calendar-event"></i></div>
+              <h5 class="card-title fw-bold">Eventos Sociales</h5>
+              <p class="card-text flex-grow-1">
+                Organización de talleres, asambleas y actividades sociales para fortalecer los lazos entre afiliados.
+              </p>
+              <a href="#noticias" class="btn btn-outline-warning mt-3 align-self-start">
+                <i class="bi bi-calendar3-event me-1"></i>Ver próximos eventos
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <!-- Sección Noticias -->
+<section id="noticias" class="container py-5">
+  <h2 class="text-center text-primary fw-bold mb-5">Últimas Noticias</h2>
+  <div class="row g-4" id="newsIndex"></div>
+  <div class="text-center mt-4">
+    <a href="/html/comunicacion-noticias.html" class="btn btn-outline-primary btn-lg">
+      <i class="bi bi-newspaper me-2"></i> Ver todas las noticias
+    </a>
+  </div>
+</section>
+
+<style>
+  .news-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 18px;
+    min-height: 320px;
+    color: #fff;
+    background: #000;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .news-card:hover { transform: translateY(-8px); }
+  .news-card img {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .news-card:hover img { transform: scale(1.1); }
+  .news-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.85));
+    padding: 20px;
+  }
+  .news-title { font-size: 1.25rem; font-weight: 700; }
+  .news-summary { font-size: 0.95rem; opacity: 0.9; }
+</style>
+
+<script>
+  const noticias = [
+    {
+      title: "Rifa Bicicleta Electro-asistida",
+      summary: "Participa en la gran rifa de una bicicleta electro-asistida.",
+      image: "img/AFICHE RIFA BICICLETA ELECTRO ASISTIDA.png"
+    },
+    {
+      title: "Paseo Recreativo ASECONSEVI",
+      summary: "Invitación al paseo con actividades para asociados y sus familias.",
+      image: "img/7.png"
+    },
+    {
+      title: "Comunicado Institucional",
+      summary: "Información importante para los asociados sobre gestiones recientes.",
+      image: "/img/6.png"
+    },
+    {
+      title: "Tips para ser más productivo",
+      summary: "Consejos prácticos para mejorar la productividad diaria.",
+      image: "img/tips-productividad.png"
+    },
+    {
+      title: "Alimentación Saludable",
+      summary: "Infografía con consejos sobre nutrición y buenos hábitos.",
+      image: "img/comida-saludable.png"
+    },
+    {
+      title: "Carátula Institucional",
+      summary: "Material oficial de ASECONSEVI para documentos institucionales.",
+      image: "img/Documento A4 de Carátula de Matemática Ilustrativa Celeste y Blanca.png"
+    }
+  ];
+
+  const indexGrid = document.getElementById("newsIndex");
+
+  // Mostrar solo las 3 primeras noticias
+  noticias.slice(0, 3).forEach(n => {
+    const col = document.createElement("div");
+    col.classList.add("col-md-6", "col-lg-4");
+    col.innerHTML = `
+      <div class="news-card">
+        <img src="${n.image}" alt="Noticia ASECONSEVI">
+        <div class="news-overlay">
+          <h5 class="news-title">${n.title}</h5>
+          <p class="news-summary">${n.summary}</p>
+        </div>
+      </div>
+    `;
+    indexGrid.appendChild(col);
+  });
+</script>
+
+
+
+  <!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo y Descripción -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <img src="/img/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+        <p class="text-muted">Somos una empresa comprometida con el bienestar y desarrollo de nuestros usuarios. Proveemos soluciones tecnológicas y servicios personalizados.</p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted footer-link">Inicio</a></li>
+          <li><a href="#" class="text-muted footer-link">Servicios</a></li>
+          <li><a href="#" class="text-muted footer-link">Noticias</a></li>
+          <li><a href="#" class="text-muted footer-link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Síguenos</h5>
+        <div class="social-icons">
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-muted footer-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de Autor -->
+    <div class="text-center mt-4 pt-3">
+      <p class="text-muted small">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Estilos CSS Personalizados -->
+<style>
+  footer {
+    background-color: #212529; /* Fondo oscuro */
+  }
+
+  .footer-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #00bcd4; /* Azul brillante para interacción */
+    padding-left: 10px; /* Desplazamiento suave al pasar el ratón */
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-icon:hover {
+    color: #00bcd4; /* Color de iconos en hover */
+    transform: translateY(-5px); /* Efecto de elevación suave */
+  }
+
+  .text-muted {
+    color: #f8f9fa !important; /* Gris claro para los textos */
+  }
+
+  .text-white {
+    color: white !important; /* Blanco para títulos */
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Efecto de agrandar iconos */
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 992px) {
+    footer .col-md-4 {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 576px) {
+    footer .col-md-4 {
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- Font Awesome (para los iconos sociales) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Theme toggle (clásico modo claro/oscuro)
+    const btnTheme = document.getElementById('btnTheme');
+    btnTheme.addEventListener('click', () => {
+      if (document.documentElement.getAttribute('data-theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        btnTheme.innerHTML = '<i class="bi bi-sun-fill me-1"></i>Modo claro';
+        btnTheme.classList.remove('btn-outline-primary');
+        btnTheme.classList.add('btn-outline-light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        btnTheme.innerHTML = '<i class="bi bi-moon-fill me-1"></i>Modo oscuro';
+        btnTheme.classList.remove('btn-outline-light');
+        btnTheme.classList.add('btn-outline-primary');
+      }
+    });
+
+    // Bootstrap form validation
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    // Servicios - filtro simple
+    const filterSelect = document.getElementById('filterServices');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    filterSelect.addEventListener('change', () => {
+      const value = filterSelect.value;
+      serviceCards.forEach(card => {
+        if (value === 'all' || card.dataset.category === value) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+
+</html>

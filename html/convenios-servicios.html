@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convenios - ASECONSEVI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    :root{--primary:#0d6efd;--muted:#6c757d}
+    body{padding-top:92px;transition:background .25s,color .25s}
+    .dark-mode{background:#0f1720;color:#e6eef8}
+
+    /* Navbar / footer adjustments for dark mode */
+    .dark-mode .navbar, .dark-mode footer{background:#0b1220 !important;border-color:transparent}
+    .dark-mode .nav-link, .dark-mode .navbar-brand, .dark-mode .dropdown-item{color:#e6eef8 !important}
+
+    /* Hero */
+    .hero{
+      background:linear-gradient(180deg, rgba(13,110,253,0.92), rgba(4,66,130,0.92));
+      color:#fff;padding:64px 20px;border-radius:6px;box-shadow:0 8px 30px rgba(13,110,253,0.12)
+    }
+    .hero .subtitle{opacity:.95}
+
+    /* Section title */
+    .section-title{display:flex;align-items:center;gap:.6rem;margin-top:40px;margin-bottom:18px}
+    .section-title i{font-size:1.35rem;color:var(--primary)}
+    .section-title h3{margin:0;font-weight:700;color:#0b2a66}
+    .dark-mode .section-title h3{color:#dbe9ff}
+
+    /* Cards */
+    .convenio-card{border-radius:12px;overflow:hidden;border:1px solid rgba(13,110,253,0.06);background:#fff;transition:transform .28s,box-shadow .28s}
+    .convenio-card:hover{transform:translateY(-8px);box-shadow:0 14px 40px rgba(4,66,130,0.12)}
+    .convenio-card .card-body{padding:1.25rem}
+    .convenio-card .icon-wrap{height:110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(13,110,253,0.06),rgba(13,110,253,0.02))}
+    .convenio-card .icon-wrap i{font-size:2.4rem;color:var(--primary)}
+
+    /* Dark card */
+    .dark-mode .convenio-card{background:#0b1220;border:1px solid rgba(255,255,255,0.04)}
+    .dark-mode .convenio-card .icon-wrap{background:transparent}
+    .dark-mode .convenio-card h6{color:#e6eef8}
+    .convenio-card p{color:var(--muted);margin-bottom:0}
+    .dark-mode .convenio-card p{color:#9fb1d9}
+
+    /* Modal tweaks */
+    .modal-content{border-radius:12px}
+    .modal .contact-row{font-size:.95rem;color:var(--muted)}
+    .dark-mode .modal-content{background:#071025;color:#dbe9ff}
+    .dark-mode .modal .contact-row{color:#9fb1d9}
+
+    /* Responsive tweaks */
+    @media (max-width:768px){.icon-wrap{height:88px}} 
+  </style>
+</head>
+<body>
+ <!-- Navbar con menú desplegable -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+
+          <!-- Quiénes Somos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-people-fill me-1"></i>Quiénes somos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
+              <li><a class="dropdown-item" href="/html/historia.html">Historia</a></li>
+              <li><a class="dropdown-item" href="/html/misión.html">Misión, Visión y Valores</a></li>
+              <li><a class="dropdown-item" href="/html/Junta.directiva.html">Junta Directiva</a></li>
+              <li><a class="dropdown-item" href="/html/comite.html">Comités</a></li>
+              <li><a class="dropdown-item" href="/html/contactos.html">Contactos</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item" href="/html/Tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/admin/login.html"><i class="bi bi-shield-lock-fill me-1"></i>Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Spacer to offset fixed navbar -->
+  <div style="height: 70px;"></div>
+
+  <!-- HERO mejorado -->
+  <main class="container">
+    <section class="hero mt-4">
+      <div class="row align-items-center">
+        <div class="col-lg-8 mx-auto text-center hero-content">
+          <h1 class="display-6 fw-bold">Convenios exclusivos para asociados</h1>
+          <p class="subtitle lead">Alianzas en educación, salud, turismo, comercio y servicios — descuentos y beneficios directos al presentar tu carnet ASECONSEVI.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Secciones con tarjetas (cada tarjeta abre su modal) -->
+
+    <!-- EDUCACIÓN -->
+    <div class="section-title"><i class="bi bi-mortarboard-fill"></i><h3>Educación</h3></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-cursos-sj">
+          <div class="icon-wrap"><i class="bi bi-journal-text"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Cursos San José</h6>
+            <p class="small">Capacitaciones cortas y talleres con descuento.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-ucentral">
+          <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Universidad Central</h6>
+            <p class="small">Descuento en matrícula y mensualidades.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-castro">
+          <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Universidad Castro Carazo</h6>
+            <p class="small">Becas parciales y descuentos en programas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-fidelitas">
+          <div class="icon-wrap"><i class="bi bi-award"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Universidad Fidélitas</h6>
+            <p class="small">Beneficios en programas técnicos y universitarios.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-creativa">
+          <div class="icon-wrap"><i class="bi bi-palette"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Creativa</h6>
+            <p class="small">Cursos de diseño y creatividad con tarifas especiales.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-sanjuan">
+          <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Universidad San Juan de la Cruz</h6>
+            <p class="small">Convenios en formación profesional.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-uamericana">
+          <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Universidad Americana</h6>
+            <p class="small">Descuentos para asociados y familiares.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-3">
+        <div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-uibero">
+          <div class="icon-wrap"><i class="bi bi-mortarboard"></i></div>
+          <div class="card-body text-center">
+            <h6 class="fw-bold">Universidad Iberoamericana</h6>
+            <p class="small">Programas de grado y posgrado con beneficios.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VACACIONALES -->
+    <div class="section-title"><i class="bi bi-sun"></i><h3>Vacacionales</h3></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-holidayinn"><div class="icon-wrap"><i class="bi bi-building"></i></div><div class="card-body text-center"><h6>Holiday Inn</h6><p class="small">Tarifas preferenciales y paquetes familiares.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-villalapas"><div class="icon-wrap"><i class="bi bi-house-door"></i></div><div class="card-body text-center"><h6>Hotel Villalapas</h6><p class="small">Promociones por temporada.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-samara"><div class="icon-wrap"><i class="bi bi-tree"></i></div><div class="card-body text-center"><h6>Villas Playa Sámara</h6><p class="small">Descuentos en hospedaje y actividades.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-fiesta"><div class="icon-wrap"><i class="bi bi-stars"></i></div><div class="card-body text-center"><h6>Fiesta Resort</h6><p class="small">Paquetes con descuento.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-arenas"><div class="icon-wrap"><i class="bi bi-snow"></i></div><div class="card-body text-center"><h6>Hotel Arenas</h6><p class="small">Ofertas estacionales.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-bay"><div class="icon-wrap"><i class="bi bi-geo-alt"></i></div><div class="card-body text-center"><h6>Bay Island</h6><p class="small">Turismo y hospedaje preferencial.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-bestw"><div class="icon-wrap"><i class="bi bi-building"></i></div><div class="card-body text-center"><h6>Best Western</h6><p class="small">Convenios a nivel nacional.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-oasis"><div class="icon-wrap"><i class="bi bi-droplet"></i></div><div class="card-body text-center"><h6>Oasis Tropical</h6><p class="small">Promociones en paquetes.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-barcelo"><div class="icon-wrap"><i class="bi bi-house"></i></div><div class="card-body text-center"><h6>Barceló Hotels</h6><p class="small">Descuentos corporativos.</p></div></div></div>
+    </div>
+
+    <!-- SALUD -->
+    <div class="section-title"><i class="bi bi-heart-pulse"></i><h3>Salud</h3></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-opticas"><div class="icon-wrap"><i class="bi bi-eyeglasses"></i></div><div class="card-body text-center"><h6>Ópticas Munkel</h6><p class="small">Descuentos en monturas y lentes.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-asembis"><div class="icon-wrap"><i class="bi bi-hospital"></i></div><div class="card-body text-center"><h6>Asembis</h6><p class="small">Consultas y procedimientos con tarifa preferencial.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-asodent"><div class="icon-wrap"><i class="bi bi-file-medical"></i></div><div class="card-body text-center"><h6>Aso Dent</h6><p class="small">Descuento en servicios dentales preventivos.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-unibe"><div class="icon-wrap"><i class="bi bi-hospital-fill"></i></div><div class="card-body text-center"><h6>Hospital Unibe</h6><p class="small">Atención prioritaria y tarifas especiales.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-labsj"><div class="icon-wrap"><i class="bi bi-activity"></i></div><div class="card-body text-center"><h6>Laboratorios San José</h6><p class="small">Precios preferenciales en exámenes.</p></div></div></div>
+    </div>
+
+    <!-- VEHÍCULOS -->
+    <div class="section-title"><i class="bi bi-car-front"></i><h3>Vehículos</h3></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-mapache"><div class="icon-wrap"><i class="bi bi-car-front"></i></div><div class="card-body text-center"><h6>Mapache Renta CR</h6><p class="small">Descuentos en renta de vehículos.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-adobe"><div class="icon-wrap"><i class="bi bi-truck"></i></div><div class="card-body text-center"><h6>Adobe Rent a Car</h6><p class="small">Tarifas corporativas para asociados.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-amigo"><div class="icon-wrap"><i class="bi bi-truck-flatbed"></i></div><div class="card-body text-center"><h6>Amigo Rent a Car</h6><p class="small">Promociones por reservas anticipadas.</p></div></div></div>
+    </div>
+
+    <!-- FÚNEBRES -->
+    <div class="section-title"><i class="bi bi-flower1"></i><h3>Fúnebres</h3></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-valle"><div class="icon-wrap"><i class="bi bi-tree-fill"></i></div><div class="card-body text-center"><h6>Valle de Paz</h6><p class="small">Planes funerarios con condiciones especiales.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-piedad"><div class="icon-wrap"><i class="bi bi-award"></i></div><div class="card-body text-center"><h6>La Piedad</h6><p class="small">Asistencia y descuentos en servicios funerarios.</p></div></div></div>
+    </div>
+
+    <!-- COMERCIALES -->
+    <div class="section-title"><i class="bi bi-bag-check"></i><h3>Comerciales</h3></div>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-pricesmart"><div class="icon-wrap"><i class="bi bi-basket"></i></div><div class="card-body text-center"><h6>PriceSmart</h6><p class="small">Descuentos en membresías y compras seleccionadas.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-ekono"><div class="icon-wrap"><i class="bi bi-shop"></i></div><div class="card-body text-center"><h6>Ekono</h6><p class="small">Ofertas especiales para asociados.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-unimart"><div class="icon-wrap"><i class="bi bi-shop-window"></i></div><div class="card-body text-center"><h6>Unimart</h6><p class="small">Descuentos en productos seleccionados.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-dipo"><div class="icon-wrap"><i class="bi bi-bag-fill"></i></div><div class="card-body text-center"><h6>Dipo</h6><p class="small">Promociones para asociados.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-elrey"><div class="icon-wrap"><i class="bi bi-shop"></i></div><div class="card-body text-center"><h6>El Rey</h6><p class="small">Beneficios en compras.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-asotienda"><div class="icon-wrap"><i class="bi bi-shop-window"></i></div><div class="card-body text-center"><h6>Aso Tienda</h6><p class="small">Ofertas exclusivas.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-asomega"><div class="icon-wrap"><i class="bi bi-shop"></i></div><div class="card-body text-center"><h6>Aso Mega</h6><p class="small">Promociones y descuentos.</p></div></div></div>
+    </div>
+
+    <!-- OTROS -->
+    <div class="section-title"><i class="bi bi-stars"></i><h3>Otros</h3></div>
+    <div class="row g-4 mb-5">
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-superherr"><div class="icon-wrap"><i class="bi bi-tools"></i></div><div class="card-body text-center"><h6>Super Herramientas</h6><p class="small">Descuentos en ferretería y herramientas.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-ciclo"><div class="icon-wrap"><i class="bi bi-bicycle"></i></div><div class="card-body text-center"><h6>Ciclo Boutique</h6><p class="small">Beneficios en compras y servicios.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-grupoq"><div class="icon-wrap"><i class="bi bi-building"></i></div><div class="card-body text-center"><h6>Grupo Q</h6><p class="small">Alianzas comerciales y descuentos.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-emove"><div class="icon-wrap"><i class="bi bi-lightning-charge-fill"></i></div><div class="card-body text-center"><h6>Emove</h6><p class="small">Ofertas en movilidad eléctrica.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-envios"><div class="icon-wrap"><i class="bi bi-truck"></i></div><div class="card-body text-center"><h6>Envios CR</h6><p class="small">Tarifas preferenciales en envíos.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-disdebisa"><div class="icon-wrap"><i class="bi bi-box-seam"></i></div><div class="card-body text-center"><h6>Disdebisa</h6><p class="small">Descuentos por volumen.</p></div></div></div>
+      <div class="col-sm-6 col-md-3"><div class="card convenio-card" data-bs-toggle="modal" data-bs-target="#modal-superbat"><div class="icon-wrap"><i class="bi bi-battery-full"></i></div><div class="card-body text-center"><h6>Super Baterías</h6><p class="small">Ofertas y garantías extendidas.</p></div></div></div>
+    </div>
+
+  </main>
+<!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo y Descripción -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <img src="/img/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+        <p class="text-muted">Somos una empresa comprometida con el bienestar y desarrollo de nuestros usuarios. Proveemos soluciones tecnológicas y servicios personalizados.</p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted footer-link">Inicio</a></li>
+          <li><a href="#" class="text-muted footer-link">Servicios</a></li>
+          <li><a href="#" class="text-muted footer-link">Noticias</a></li>
+          <li><a href="#" class="text-muted footer-link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Síguenos</h5>
+        <div class="social-icons">
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-muted footer-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de Autor -->
+    <div class="text-center mt-4 pt-3">
+      <p class="text-muted small">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Estilos CSS Personalizados -->
+<style>
+  footer {
+    background-color: #212529; /* Fondo oscuro */
+  }
+
+  .footer-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #00bcd4; /* Azul brillante para interacción */
+    padding-left: 10px; /* Desplazamiento suave al pasar el ratón */
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-icon:hover {
+    color: #00bcd4; /* Color de iconos en hover */
+    transform: translateY(-5px); /* Efecto de elevación suave */
+  }
+
+  .text-muted {
+    color: #f8f9fa !important; /* Gris claro para los textos */
+  }
+
+  .text-white {
+    color: white !important; /* Blanco para títulos */
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Efecto de agrandar iconos */
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 992px) {
+    footer .col-md-4 {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 576px) {
+    footer .col-md-4 {
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- Font Awesome (para los iconos sociales) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <!-- MODALES (información ejemplo para cada convenio) -->
+
+  <!-- Educación -->
+  <div class="modal fade" id="modal-cursos-sj" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header border-0">
+          <h5 class="modal-title">Cursos San José</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p>Capacitaciones técnicas y talleres con descuento especial para asociados ASECONSEVI. Aplica previa presentación de carné.</p>
+          <p class="contact-row"><strong>Contacto:</strong> cursos@ejemplo.cr • Tel: (506) 2222-0000</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-ucentral" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header border-0"><h5 class="modal-title">Universidad Central</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+        <div class="modal-body"><p>Descuento en matrícula (hasta 15%) y mensualidades para asociados y familiares directos. Valida en programas seleccionados.</p><p class="contact-row"><strong>Info:</strong> admisiones@ucentral.cr • Tel: (506) 2222-1111</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-castro" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Universidad Castro Carazo</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Becas parciales y descuentos en programas técnicos y universitarios. Aplican términos y condiciones.</p><p class="contact-row"><strong>Contacto:</strong> info@castro.ac.cr • Tel: (506) 2222-2222</p></div></div></div>
+  </div>
+
+  <div class="modal fade" id="modal-fidelitas" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Universidad Fidélitas</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Beneficios en programas académicos y cursos de formación continua. Convenios en campus seleccionados.</p><p class="contact-row"><strong>Contacto:</strong> info@ufidelitas.ac.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-creativa" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Creativa</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Cursos de diseño y creatividad con tarifas preferenciales para asociados.</p><p class="contact-row"><strong>Contacto:</strong> contacto@creativa.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-sanjuan" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Universidad San Juan de la Cruz</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Programas de grado con beneficios especiales para asociados ASECONSEVI.</p><p class="contact-row"><strong>Contacto:</strong> admisiones@sanjuanc.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-uamericana" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Universidad Americana</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos en matrícula para programas seleccionados y asesoría en admisiones.</p><p class="contact-row"><strong>Contacto:</strong> info@uam.ac.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-uibero" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Universidad Iberoamericana</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Beneficios en programas presenciales y virtuales. Aplica para asociados y familiares.</p><p class="contact-row"><strong>Contacto:</strong> info@uibero.ac.cr</p></div></div></div></div>
+
+  <!-- Vacacionales -->
+  <div class="modal fade" id="modal-holidayinn" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Holiday Inn</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Tarifas preferenciales para asociados en hospedaje y paquetes corporativos.</p><p class="contact-row"><strong>Reservas:</strong> reservaciones@holidayinn.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-villalapas" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Hotel Villalapas</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Promociones estacionales y descuentos por estadías prolongadas para asociados.</p><p class="contact-row"><strong>Info:</strong> reservas@villalapas.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-samara" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Villas Playa Sámara</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos en paquetes vacacionales y excursiones locales.</p><p class="contact-row"><strong>Reservas:</strong> reservas@villasamara.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-fiesta" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Fiesta Resort</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Paquetes familiares con precios especiales y actividades incluidas.</p><p class="contact-row"><strong>Reservas:</strong> info@fiestaresort.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-arenas" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Hotel Arenas</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Ofertas en temporadas bajas y descuentos por grupos.</p><p class="contact-row"><strong>Info:</strong> reservas@hotelaresas.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-bay" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Bay Island</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Paquetes turísticos y hospedaje en islas asociadas con tarifa preferencial.</p><p class="contact-row"><strong>Info:</strong> reservas@bayisland.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-bestw" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Best Western</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Convenios nacionales con descuentos en cadenas seleccionadas.</p><p class="contact-row"><strong>Reservas:</strong> reservas@bestwestern.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-oasis" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Oasis Tropical</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Promociones en paquetes todo incluido.</p><p class="contact-row"><strong>Info:</strong> reservas@oasistropical.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-barcelo" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Barceló Hotels</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Tarifas corporativas y paquetes exclusivos para asociados.</p><p class="contact-row"><strong>Reservas:</strong> reservas@barcelo.cr</p></div></div></div></div>
+
+  <!-- Salud modales -->
+  <div class="modal fade" id="modal-opticas" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Ópticas Munkel</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos en monturas, lentes y servicios de ajuste.</p><p class="contact-row"><strong>Contacto:</strong> info@opticasmunkel.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-asembis" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Asembis</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Consultas médicas y procedimientos con tarifas preferenciales para asociados.</p><p class="contact-row"><strong>Contacto:</strong> contacto@asembis.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-asodent" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Aso Dent</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuento en limpiezas, empastes y consultas preventivas.</p><p class="contact-row"><strong>Contacto:</strong> info@asodent.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-unibe" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Hospital Unibe</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Atención prioritaria y tarifas especiales en servicios médicos y consultas.</p><p class="contact-row"><strong>Contacto:</strong> info@unibe.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-labsj" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Laboratorios San José</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Precios preferenciales en exámenes clínicos y servicios de laboratorio.</p><p class="contact-row"><strong>Contacto:</strong> laboratorio@labsj.cr</p></div></div></div></div>
+
+  <!-- Vehículos -->
+  <div class="modal fade" id="modal-mapache" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Mapache Renta CR</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos en renta diaria y tarifas corporativas para asociados.</p><p class="contact-row"><strong>Contacto:</strong> reservas@mapache.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-adobe" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Adobe Rent a Car</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Tarifas preferenciales y condiciones flexibles para reservas.</p><p class="contact-row"><strong>Contacto:</strong> info@adoberentacar.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-amigo" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Amigo Rent a Car</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Promociones por reservas anticipadas y paquetes semanales.</p><p class="contact-row"><strong>Contacto:</strong> contacto@amigorent.cr</p></div></div></div></div>
+
+  <!-- Funerarios -->
+  <div class="modal fade" id="modal-valle" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Valle de Paz</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Planes funerarios y facilidades de pago con condiciones preferenciales.</p><p class="contact-row"><strong>Contacto:</strong> info@valledepaz.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-piedad" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">La Piedad</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Asistencia profesional y descuentos en servicios funerarios.</p><p class="contact-row"><strong>Contacto:</strong> contacto@lapiedad.cr</p></div></div></div></div>
+
+  <!-- Comerciales -->
+  <div class="modal fade" id="modal-pricesmart" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">PriceSmart</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos en membresías y promociones exclusivas en productos seleccionados.</p><p class="contact-row"><strong>Contacto:</strong> membresias@pricesmart.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-ekono" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Ekono</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Ofertas y descuentos en tiendas participantes.</p><p class="contact-row"><strong>Contacto:</strong> info@ekono.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-unimart" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Unimart</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Beneficios en productos seleccionados y promociones especiales.</p><p class="contact-row"><strong>Contacto:</strong> info@unimart.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-dipo" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Dipo</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Promociones y descuentos en artículos seleccionados para asociados.</p><p class="contact-row"><strong>Contacto:</strong> contacto@dipo.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-elrey" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">El Rey</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Beneficios en compras y promociones por temporada.</p><p class="contact-row"><strong>Contacto:</strong> info@elrey.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-asotienda" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Aso Tienda</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Ofertas exclusivas para asociados en comercios afiliados.</p><p class="contact-row"><strong>Contacto:</strong> ventas@asotienda.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-asomega" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Aso Mega</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Promociones y descuentos especiales en tiendas Mega.</p><p class="contact-row"><strong>Contacto:</strong> contacto@asomega.cr</p></div></div></div></div>
+
+  <!-- Otros modales -->
+  <div class="modal fade" id="modal-superherr" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Super Herramientas</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos en ferretería, herramientas y suministros.</p><p class="contact-row"><strong>Contacto:</strong> ventas@superherr.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-ciclo" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Ciclo Boutique</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Beneficios en bicicletas y accesorios, servicios de taller.</p><p class="contact-row"><strong>Contacto:</strong> info@cicloboutique.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-grupoq" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Grupo Q</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Alianzas comerciales y beneficios corporativos para asociados.</p><p class="contact-row"><strong>Contacto:</strong> contacto@grupoq.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-emove" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Emove</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Ofertas en movilidad eléctrica y servicios relacionados.</p><p class="contact-row"><strong>Contacto:</strong> info@emove.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-envios" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Envios CR</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Tarifas preferenciales en servicios de mensajería y paquetería.</p><p class="contact-row"><strong>Contacto:</strong> contacto@envioscr.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-disdebisa" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Disdebisa</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Descuentos por compras al por mayor y condiciones especiales.</p><p class="contact-row"><strong>Contacto:</strong> ventas@disdebisa.cr</p></div></div></div></div>
+
+  <div class="modal fade" id="modal-superbat" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content p-3"><div class="modal-header border-0"><h5 class="modal-title">Super Baterías</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Ofertas y garantías extendidas en baterías automotrices.</p><p class="contact-row"><strong>Contacto:</strong> info@superbaterias.cr</p></div></div></div></div>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Tema oscuro persistente y aplicado globalmente
+    const btnTheme = document.getElementById('btnTheme');
+    btnTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('aseconsevi-theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+    if (localStorage.getItem('aseconsevi-theme') === 'dark') document.body.classList.add('dark-mode');
+
+    // Marcar item activo en el menú (según nombre de archivo)
+    (function markActive(){
+      const page = (location.pathname.split('/').pop() || 'index.html');
+      document.querySelectorAll('.navbar .nav-link, .navbar .dropdown-item').forEach(el => {
+        try{
+          const href = el.getAttribute('href');
+          if(href && href.split('/').pop() === page) el.classList.add('active');
+        }catch(e){}
+      });
+    })();
+  </script>
+</body>
+</html>

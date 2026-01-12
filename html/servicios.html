@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Servicios - ASECONSEVI</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="index.html">
+        <img src="/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px; object-fit:contain;" />
+        <span class="fw-bold fs-4" style="color: var(--color-primary);">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="quienes.html"><i class="bi bi-people-fill me-1"></i>Quiénes somos</a></li>
+          <li class="nav-item"><a class="nav-link active" href="servicios.html"><i class="bi bi-briefcase-fill me-1"></i>Servicios</a></li>
+          <li class="nav-item"><a class="nav-link" href="tramites.html"><i class="bi bi-journal-check me-1"></i>Trámites</a></li>
+          <li class="nav-item"><a class="nav-link" href="noticias.html"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+        </ul>
+        <button id="btnTheme" class="btn btn-outline-primary"><i class="bi bi-moon-fill me-1"></i>Modo oscuro</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Spacer for fixed navbar -->
+  <div style="height: 70px;"></div>
+
+  <!-- Encabezado de Página -->
+  <header class="bg-primary text-white text-center py-5">
+    <div class="container">
+      <h1 class="fw-bold">Nuestros Servicios</h1>
+      <p class="lead">Descubre cómo ASECONSEVI impulsa el bienestar de sus afiliados</p>
+    </div>
+  </header>
+
+  <!-- Sección de Servicios -->
+  <section class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-primary fw-bold">¿Qué es ASECONSEVI?</h2>
+      <p>
+        ASECONSEVI es una <strong>Asociación Solidarista</strong> costarricense sin fines de lucro que busca promover el bienestar social,
+        económico y profesional de sus afiliados. Como parte del movimiento solidarista en Costa Rica, ASECONSEVI funciona bajo los principios de ayuda mutua,
+        solidaridad, equidad y desarrollo humano sostenible.
+      </p>
+      <p>
+        Nuestro objetivo es brindar soluciones que permitan a nuestros asociados mejorar su calidad de vida por medio de servicios como préstamos, capacitaciones,
+        actividades sociales, asesoría legal y beneficios especiales. Todo bajo un ambiente de confianza, compromiso y cooperación mutua.
+      </p>
+
+      <hr class="my-5" />
+
+      <h2 class="mb-4 text-primary fw-bold">Principales Servicios que Ofrecemos</h2>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="border rounded-4 p-4 shadow-sm h-100">
+            <h4 class="text-secondary"><i class="bi bi-cash-coin me-2 text-success"></i> Préstamos Personales</h4>
+            <p>Ofrecemos préstamos accesibles a tasas solidarias para necesidades personales, educación, salud, vivienda, y más.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="border rounded-4 p-4 shadow-sm h-100">
+            <h4 class="text-secondary"><i class="bi bi-person-badge-fill me-2 text-primary"></i> Asesoría Legal y Financiera</h4>
+            <p>Brindamos orientación gratuita en temas laborales, legales y financieros para todos nuestros afiliados.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="border rounded-4 p-4 shadow-sm h-100">
+            <h4 class="text-secondary"><i class="bi bi-heart-pulse me-2 text-danger"></i> Programas de Bienestar</h4>
+            <p>Actividades de salud, deporte, cultura y recreación para fortalecer el bienestar integral de los asociados y sus familias.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="border rounded-4 p-4 shadow-sm h-100">
+            <h4 class="text-secondary"><i class="bi bi-people-fill me-2 text-warning"></i> Actividades Sociales</h4>
+            <p>Eventos comunitarios, celebraciones, talleres y espacios de integración para fomentar la solidaridad y participación.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-5">
+        <a href="tramites.html" class="btn btn-primary btn-lg shadow-sm">
+          <i class="bi bi-arrow-right-circle me-2"></i>Iniciar Trámite
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-5 mt-5">
+    <div class="container">
+      <div class="row">
+        <!-- Logo y descripción -->
+        <div class="col-md-4 mb-4">
+          <img src="/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+          <p class="text-muted">ASECONSEVI trabaja para generar bienestar y oportunidades mediante la solidaridad y el compromiso colectivo.</p>
+        </div>
+        <!-- Enlaces rápidos -->
+        <div class="col-md-4 mb-4">
+          <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="index.html" class="text-muted footer-link">Inicio</a></li>
+            <li><a href="servicios.html" class="text-muted footer-link">Servicios</a></li>
+            <li><a href="noticias.html" class="text-muted footer-link">Noticias</a></li>
+            <li><a href="contacto.html" class="text-muted footer-link">Contacto</a></li>
+          </ul>
+        </div>
+        <!-- Redes sociales -->
+        <div class="col-md-4 mb-4">
+          <h5 class="text-white mb-3">Síguenos</h5>
+          <div class="social-icons">
+            <a href="#" class="text-muted me-3 footer-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-muted me-3 footer-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="text-muted me-3 footer-icon"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="text-muted footer-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4 pt-3">
+        <p class="text-muted small">&copy; 2025 ASECONSEVI. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Toggle de tema claro/oscuro
+    const btnTheme = document.getElementById('btnTheme');
+    btnTheme.addEventListener('click', () => {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute('data-theme');
+      const isLight = currentTheme === 'light';
+      html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+      btnTheme.innerHTML = isLight
+        ? '<i class="bi bi-sun-fill me-1"></i>Modo claro'
+        : '<i class="bi bi-moon-fill me-1"></i>Modo oscuro';
+      btnTheme.classList.toggle('btn-outline-primary');
+      btnTheme.classList.toggle('btn-outline-light');
+    });
+  </script>
+
+  <!-- Font Awesome para iconos de redes -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aseconsevi | Noticias</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { background: #f5f7fa; font-family: 'Segoe UI', sans-serif; }
+
+    h2 {
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    /* ===== Tarjetas de Noticias ===== */
+    .news-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      cursor: pointer;
+      min-height: 350px;
+      color: #fff;
+      background: #000;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    .news-card:hover {
+      transform: translateY(-8px);
+    }
+    .news-card img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .news-card:hover img {
+      transform: scale(1.1);
+    }
+    .news-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      padding: 20px;
+      transition: all 0.4s ease;
+    }
+    .news-card:hover .news-overlay {
+      transform: translateY(-10px);
+    }
+    .news-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+    .news-summary {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+    .news-btn {
+      margin-top: 10px;
+      padding: 8px 16px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      border: none;
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+    }
+    .news-btn:hover {
+      background: #0d6efd;
+      color: #fff;
+    }
+
+    /* ===== Overlay Expandido ===== */
+    #newsOverlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      z-index: 9999;
+    }
+    #newsOverlayContent {
+      background: #fff;
+      border-radius: 20px;
+      max-width: 900px;
+      width: 100%;
+      padding: 30px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+      animation: fadeInUp 0.6s ease;
+      position: relative;
+    }
+    #newsOverlay img {
+      border-radius: 15px;
+      margin-bottom: 20px;
+      max-height: 400px;
+      object-fit: contain;
+      width: 100%;
+    }
+    #newsOverlay .btn-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: #fff;
+      border-radius: 50%;
+      padding: 10px;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR (BASE) ========== -->
+  <!-- Aquí va tu navbar -->
+   <!-- Navbar con menú desplegable -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+
+          <!-- Quiénes Somos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-people-fill me-1"></i>Quiénes somos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
+              <li><a class="dropdown-item" href="/html/historia.html">Historia</a></li>
+              <li><a class="dropdown-item" href="/html/misión.html">Misión, Visión y Valores</a></li>
+              <li><a class="dropdown-item" href="/html/Junta.directiva.html">Junta Directiva</a></li>
+              <li><a class="dropdown-item" href="/html/comite.html">Comités</a></li>
+              <li><a class="dropdown-item" href="/html/contactos.html">Contactos</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item" href="/html/Tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/admin/login.html"><i class="bi bi-shield-lock-fill me-1"></i>Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <!-- Spacer to offset fixed navbar -->
+  <div style="height: 70px;"></div>
+
+
+  <section class="container py-5">
+    <h2 class="text-center text-primary mb-5">Últimas Noticias</h2>
+    <div class="row g-4" id="newsGrid"></div>
+  </section>
+
+  <!-- ========== Overlay Detalle Noticia ========== -->
+  <div id="newsOverlay" onclick="closeOverlay(event)">
+    <div id="newsOverlayContent" class="bg-light p-4">
+      <button class="btn-close" onclick="closeOverlay(event)"></button>
+      <h3 id="overlayTitle" class="fw-bold text-primary mb-3"></h3>
+      <img id="overlayImage" class="img-fluid" alt="">
+      <p id="overlayContent" class="mt-3"></p>
+    </div>
+  </div>
+
+  <!-- ========== FOOTER (BASE) ========== -->
+  <!-- Aquí va tu footer -->
+   
+
+  <script>
+    const noticias = [
+      {
+        title: "Rifa Bicicleta Electro-asistida",
+        summary: "Participa en la gran rifa de una bicicleta electro-asistida.",
+        content: "ASECONSEVI organiza una rifa con el fin de recaudar fondos y promover actividades entre los asociados. El premio principal es una bicicleta electro-asistida, moderna y eficiente.",
+        image: "/img/AFICHE RIFA BICICLETA ELECTRO ASISTIDA.png"
+      },
+      {
+        title: "Paseo Recreativo ASECONSEVI",
+        summary: "Invitación al paseo con actividades para asociados y sus familias.",
+        content: "Un día de recreación y convivencia, con transporte, alimentación y actividades recreativas organizadas para todos los afiliados y sus familias.",
+        image: "/img/7.png"
+      },
+      {
+        title: "Comunicado Institucional",
+        summary: "Información importante ",
+        content: "ASECONSEVI comunica a todos sus asociados información relevante relacionada con convenios y cambios administrativos importantes.",
+        image: "/img/6.png"
+      },
+      {
+        title: "Tips para ser más productivo",
+        summary: "Consejos prácticos para mejorar la productividad diaria.",
+        content: "ASECONSEVI comparte recomendaciones para mejorar la gestión del tiempo, mantener el enfoque y lograr una mayor eficiencia en las actividades cotidianas.",
+        image: "/img/Infografía tips para ser más productivo.jpg"
+      },
+      {
+        title: "Alimentación Saludable",
+        summary: "Infografía con consejos sobre nutrición y buenos hábitos.",
+        content: "Promovemos estilos de vida saludables compartiendo consejos sobre cómo mejorar la alimentación diaria con opciones sencillas y accesibles.",
+        image: "/img/Infografía sobre comida sana y cambios saludables.jpg"
+      },
+      {
+        title: "Carátula Institucional",
+        summary: "Material institucional de ASECONSEVI para documentos oficiales.",
+        content: "Diseño oficial de la carátula institucional de ASECONSEVI, utilizado para presentaciones, informes y documentación formal.",
+        image: "/img/Documento A4 de Carátula de Matemática Ilustrativa Celeste y Blanca.png"
+      }
+    ];
+
+    const grid = document.getElementById("newsGrid");
+    const overlay = document.getElementById("newsOverlay");
+
+    // Render noticias
+    noticias.forEach((n, i) => {
+      const col = document.createElement("div");
+      col.classList.add("col-md-6","col-lg-4");
+      col.innerHTML = `
+        <div class="news-card" onclick="openOverlay(${i})">
+          <img src="${n.image}" alt="Imagen noticia">
+          <div class="news-overlay">
+            <h5 class="news-title">${n.title}</h5>
+            <p class="news-summary">${n.summary}</p>
+            <button class="news-btn"><i class="bi bi-arrow-right-circle"></i> Leer más</button>
+          </div>
+        </div>
+      `;
+      grid.appendChild(col);
+    });
+
+    // Abrir noticia
+    function openOverlay(index) {
+      document.getElementById("overlayTitle").innerText = noticias[index].title;
+      document.getElementById("overlayImage").src = noticias[index].image;
+      document.getElementById("overlayContent").innerText = noticias[index].content;
+      overlay.style.display = "flex";
+    }
+
+    // Cerrar
+    function closeOverlay(event) {
+      if (event.target.id === "newsOverlay" || event.target.classList.contains("btn-close")) {
+        overlay.style.display = "none";
+      }
+    }
+
+    // Cerrar con ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        overlay.style.display = "none";
+      }
+    });
+  </script>
+  <!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo y Descripción -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <img src="/img/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+        <p class="text-muted">Somos una empresa comprometida con el bienestar y desarrollo de nuestros usuarios. Proveemos soluciones tecnológicas y servicios personalizados.</p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted footer-link">Inicio</a></li>
+          <li><a href="#" class="text-muted footer-link">Servicios</a></li>
+          <li><a href="#" class="text-muted footer-link">Noticias</a></li>
+          <li><a href="#" class="text-muted footer-link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Síguenos</h5>
+        <div class="social-icons">
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-muted footer-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de Autor -->
+    <div class="text-center mt-4 pt-3">
+      <p class="text-muted small">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Estilos CSS Personalizados -->
+<style>
+  footer {
+    background-color: #212529; /* Fondo oscuro */
+  }
+
+  .footer-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #00bcd4; /* Azul brillante para interacción */
+    padding-left: 10px; /* Desplazamiento suave al pasar el ratón */
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-icon:hover {
+    color: #00bcd4; /* Color de iconos en hover */
+    transform: translateY(-5px); /* Efecto de elevación suave */
+  }
+
+  .text-muted {
+    color: #f8f9fa !important; /* Gris claro para los textos */
+  }
+
+  .text-white {
+    color: white !important; /* Blanco para títulos */
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Efecto de agrandar iconos */
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 992px) {
+    footer .col-md-4 {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 576px) {
+    footer .col-md-4 {
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- Font Awesome (para los iconos sociales) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

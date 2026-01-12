@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASECONSEVI · Afiliación</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+  <!-- Bootstrap (solo para utilidades; estilos propios dominan) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- ====== Estilos propios (variables fáciles de ajustar) ====== -->
+  <style>
+    :root{
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --text: #14202b;
+      --muted: #55636d;
+      --brand: #0d3b66;        /* color principal (ajustable) */
+      --accent: #0077b6;       /* color acento (ajustable) */
+      --accent-2: #ffd966;     /* acento secundario (opcional) */
+      --card-border: rgba(13,59,102,0.08);
+      --glass: rgba(255,255,255,0.85);
+      --radius-lg: 14px;
+      --radius-sm: 8px;
+      --shadow-sm: 0 6px 18px rgba(11,34,60,0.06);
+      --shadow-md: 0 12px 30px rgba(11,34,60,0.08);
+      --transition: 280ms cubic-bezier(.2,.9,.3,1);
+    }
+
+    /* Reset ligero */
+    *{box-sizing:border-box}
+    body{
+      font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+      margin:0;
+      padding-top:78px; /* reserve space for fixed navbar */
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* ---------- NAVBAR (se mantiene consistente con tu sitio) ---------- */
+    .navbar {
+      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 4px 18px rgba(11,34,60,0.06);
+      border-bottom: 1px solid rgba(13,59,102,0.04);
+    }
+    .navbar .navbar-brand img { width:48px; height:48px; object-fit:cover; }
+    .navbar .nav-link { color: var(--muted); }
+    .navbar .nav-link.active, .navbar .nav-link:hover { color: var(--brand); }
+
+    /* ===== PAGE HEADER (limpio, sin banner) ===== */
+    .page-intro{
+      max-width:1100px;
+      margin: 0 auto;
+      padding: 32px 20px;
+      display:flex;
+      gap:20px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .intro-left {
+      display:flex;
+      gap:18px;
+      align-items:center;
+    }
+    .intro-badge{
+      width:84px;
+      height:84px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      font-size:34px;
+      color:var(--surface);
+      background:linear-gradient(135deg,var(--brand),var(--accent));
+      box-shadow: var(--shadow-sm);
+    }
+    .intro-h{
+      line-height:1;
+    }
+    .intro-h h1{ font-family: "Merriweather", Georgia, serif; font-size:28px; margin:0; color:var(--brand); }
+    .intro-h p{ margin:6px 0 0; color:var(--muted); }
+
+    /* CTA descarga */
+    .intro-cta { display:flex; gap:10px; align-items:center; }
+    .btn-cta {
+      background: linear-gradient(90deg,var(--brand), var(--accent));
+      color:white;
+      border:none;
+      padding:10px 16px;
+      border-radius:10px;
+      font-weight:600;
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .btn-cta:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    /* ===== CONTENIDO: tarjetas alargadas (layout) ===== */
+    .section-wrap { max-width:1100px; margin: 24px auto; padding: 0 20px 48px; }
+
+    .elong-card{
+      display:flex;
+      gap:22px;
+      align-items:flex-start;
+      padding:22px;
+      background: linear-gradient(180deg, var(--glass), rgba(255,255,255,0.96));
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow-sm);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      overflow:hidden;
+    }
+    .elong-card + .elong-card { margin-top:18px; }
+
+    .elong-left{
+      width:108px;
+      min-width:108px;
+      height:108px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      font-size:34px;
+      color: white;
+      background: linear-gradient(135deg,var(--brand),var(--accent));
+      flex-shrink:0;
+      box-shadow: 0 8px 18px rgba(13,59,102,0.12);
+    }
+    .elong-body h3{ margin-top:0; margin-bottom:8px; font-size:18px; color:var(--brand); font-family: "Merriweather", serif; }
+    .elong-body p{ margin:0; color:var(--muted); line-height:1.5; }
+
+    .elong-actions{
+      margin-left:auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+    .btn-ghost{
+      background:transparent;
+      border:1px solid rgba(13,59,102,0.08);
+      padding:8px 12px;
+      border-radius:10px;
+      color:var(--brand);
+      font-weight:600;
+    }
+
+    /* Hover / foco (impacto) */
+    .elong-card:hover{
+      transform: translateY(-8px);
+      border-color: rgba(13,59,102,0.12);
+      box-shadow: var(--shadow-md);
+    }
+    .elong-card:focus-within{ outline: 3px solid rgba(0,119,182,0.12); }
+
+    /* Detalle oculto - expandible */
+    .elong-detail{
+      margin-top:12px;
+      padding-top:12px;
+      border-top:1px dashed rgba(13,59,102,0.06);
+      display:none;
+      color:var(--muted);
+    }
+    .elong-card.expanded .elong-detail{ display:block; }
+
+    /* ===== EN TENDENCIA (cards compactas con badge) ===== */
+    .trending-grid {
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap:16px;
+      margin-top:12px;
+    }
+    .trend-card{
+      background: var(--surface);
+      border-radius:12px;
+      padding:14px;
+      border:1px solid rgba(11,34,60,0.04);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .trend-card:hover{ transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .trend-badge{ font-size:12px; padding:6px 8px; border-radius:999px; background:var(--accent-2); color:#0b1b2a; font-weight:700; }
+
+    /* ===== Responsive adjustments ===== */
+    @media (max-width:900px){
+      .intro-left{ flex-direction:row; align-items:center; }
+      .elong-card{ flex-direction:column; align-items:stretch; }
+      .elong-left{ width:100%; height:88px; min-width:auto; border-radius:12px; }
+      .elong-actions{ margin-left:0; margin-top:12px; justify-content:flex-end; }
+    }
+
+    /* ===== Small polish: accessibility focus, links, footer ===== */
+    a.btn-cta:focus, .btn-ghost:focus { outline: 3px solid rgba(0,119,182,0.16); }
+    .sr-only{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
+
+    /* Footer (consistent) */
+    footer.site-footer{
+      background: linear-gradient(180deg,#0b2440 0%, #07223a 100%);
+      color:#e6eef8;
+      padding:36px 20px;
+      margin-top:36px;
+    }
+    footer .brand{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+    footer a{ color: #dbeeff; text-decoration:none; }
+    footer a:hover{ text-decoration:underline; color: #fff; }
+  </style>
+</head>
+<body>
+
+   <!-- Navbar con menú desplegable -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+
+          <!-- Quiénes Somos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-people-fill me-1"></i>Quiénes somos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
+              <li><a class="dropdown-item" href="/html/historia.html">Historia</a></li>
+              <li><a class="dropdown-item" href="/html/misión.html">Misión, Visión y Valores</a></li>
+              <li><a class="dropdown-item" href="/html/Junta.directiva.html">Junta Directiva</a></li>
+              <li><a class="dropdown-item" href="/html/comite.html">Comités</a></li>
+              <li><a class="dropdown-item" href="/html/contactos.html">Contactos</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item" href="/html/Tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/admin/login.html"><i class="bi bi-shield-lock-fill me-1"></i>Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ======= PAGE INTRO (sin banner grande) ======= -->
+  <header class="page-intro" role="region" aria-label="Introducción afiliación">
+    <div class="intro-left">
+      <div class="intro-badge" aria-hidden="true"><i class="bi bi-person-plus-fill"></i></div>
+      <div class="intro-h">
+        <h1>Afiliación · ASECONSEVI</h1>
+        <p>Todo lo que necesitas saber para afiliarte: requisitos, beneficios, compromisos y formularios oficiales.</p>
+      </div>
+    </div>
+
+    <div class="intro-cta">
+      <!-- Replace hrefs with your actual pdf paths (uploaded files) -->
+      <a class="btn-cta" href="downloads/formulario_afiliacion.pdf" download>
+        <i class="bi bi-download me-2"></i>Descargar Formulario de Afiliación
+      </a>
+      <a class="btn-ghost" href="downloads/formulario_desafiliacion.pdf" download>
+        <i class="bi bi-file-earmark-arrow-down me-2"></i>Formulario de Desafiliación
+      </a>
+    </div>
+  </header>
+
+  <!-- ======= MAIN CONTENT ======= -->
+  <main class="section-wrap">
+
+    <!-- ---- Tarjetas alargadas (Requisitos) ---- -->
+    <section aria-labelledby="requisitos-title">
+      <h2 id="requisitos-title" style="margin-bottom:14px; color:var(--brand); font-family:'Merriweather', serif;">Requisitos para afiliarse</h2>
+
+      <div class="elong-card" tabindex="0">
+        <div class="elong-left"><i class="bi bi-check2-circle" aria-hidden="true"></i></div>
+        <div class="elong-body">
+          <h3>Quién puede afiliarse</h3>
+          <p>Funcionarios activos del Consejo de Seguridad Vial (COSEVI), con nombramiento en propiedad o interinidad en sus cargos.</p>
+
+          <div class="elong-detail">
+            <strong>Documentos requeridos:</strong>
+            <ul>
+              <li>Copia de cédula vigente.</li>
+              <li>Formulario de afiliación debidamente llenado.</li>
+              <li>Datos bancarios para el débito (si aplica).</li>
+            </ul>
+            <p style="margin-top:8px; color:var(--muted); font-size:0.95rem;">Nota: El aporte mensual obligatorio es del 5% del salario bruto, según estatutos.</p>
+          </div>
+        </div>
+
+        <div class="elong-actions">
+          <button class="btn-ghost" data-toggle-detail><i class="bi bi-chevron-down"></i> Ver más</button>
+          <a class="btn-cta" href="downloads/formulario_afiliacion.pdf" download><i class="bi bi-download me-1"></i>Descargar</a>
+        </div>
+      </div>
+
+      <div class="elong-card" tabindex="0">
+        <div class="elong-left" style="background:linear-gradient(135deg,var(--accent),var(--brand));"><i class="bi bi-list-check"></i></div>
+        <div class="elong-body">
+          <h3>Compromisos del asociado</h3>
+          <p>Al afiliarse, el asociado autoriza la retención del 5% del salario bruto como ahorro obligatorio y acepta cumplir los estatutos de la asociación.</p>
+
+          <div class="elong-detail">
+            <ul>
+              <li>Respetar y defender las disposiciones estatutarias.</li>
+              <li>Participar en asambleas y actividades cuando sea posible.</li>
+              <li>Permitir deducciones de cuotas por créditos y otros aportes según corresponda.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="elong-actions">
+          <button class="btn-ghost" data-toggle-detail><i class="bi bi-chevron-down"></i> Detalles</button>
+        </div>
+      </div>
+
+      <div class="elong-card" tabindex="0">
+        <div class="elong-left" style="background:linear-gradient(135deg,var(--accent-2),var(--brand)); color:#07223a;"><i class="bi bi-people-fill"></i></div>
+        <div class="elong-body">
+          <h3>Beneficiarios y póliza de vida</h3>
+          <p>Puedes nombrar beneficiarios para tus ahorros y elegir participar en la póliza de vida ofrecida por la asociación (opcional).</p>
+
+          <div class="elong-detail">
+            <p>Montos de la póliza (ejemplo): Asociado ₡1,000,000; Cónyuge ₡500,000; Hijos ₡150,000 (revisa el formulario para detalles exactos).</p>
+          </div>
+        </div>
+
+        <div class="elong-actions">
+          <button class="btn-ghost" data-toggle-detail><i class="bi bi-chevron-down"></i> Ver póliza</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Proceso en pasos (visual) ---- -->
+    <section aria-labelledby="pasos-title" style="margin-top:28px;">
+      <h2 id="pasos-title" style="color:var(--brand); font-family:'Merriweather', serif;">Cómo afiliarse (en 3 pasos)</h2>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; margin-top:12px;">
+        <div class="elong-card" style="flex-direction:column; align-items:flex-start;">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div style="width:56px; height:56px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,var(--brand),var(--accent)); color:white;"><i class="bi bi-download"></i></div>
+            <div>
+              <h3 style="margin:0; font-size:16px;">1. Descargar formulario</h3>
+              <p style="margin:4px 0 0; color:var(--muted);">Obtén el formulario oficial y revisa los requisitos.</p>
+            </div>
+          </div>
+          <div style="margin-top:12px; display:flex; gap:8px;">
+            <a class="btn-ghost" href="downloads/formulario_afiliacion.pdf" download><i class="bi bi-file-earmark-arrow-down me-1"></i>Descargar</a>
+          </div>
+        </div>
+
+        <div class="elong-card" style="flex-direction:column; align-items:flex-start;">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div style="width:56px; height:56px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,var(--accent),var(--brand)); color:white;"><i class="bi bi-pen-fill"></i></div>
+            <div>
+              <h3 style="margin:0; font-size:16px;">2. Completar y adjuntar</h3>
+              <p style="margin:4px 0 0; color:var(--muted);">Llena el formulario y adjunta copia de cédula vigente.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="elong-card" style="flex-direction:column; align-items:flex-start;">
+          <div style="display:flex; gap:12px; align-items:center;">
+            <div style="width:56px; height:56px; border-radius:10px; display:grid; place-items:center; background:linear-gradient(135deg,var(--brand),var(--accent)); color:white;"><i class="bi bi-briefcase-fill"></i></div>
+            <div>
+              <h3 style="margin:0; font-size:16px;">3. Entrega y confirmación</h3>
+              <p style="margin:4px 0 0; color:var(--muted);">Entrega en ASECONSEVI o a tu Departamento de RH. Recibirás confirmación una vez aprobado.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- En tendencia / noticias relacionadas (micro-cards) ---- -->
+    <section aria-labelledby="trending-title" style="margin-top:28px;">
+      <h2 id="trending-title" style="color:var(--brand); font-family:'Merriweather', serif;">En tendencia</h2>
+      <div style="display:flex; gap:12px; align-items:center; margin-top:10px; justify-content:space-between;">
+        <p style="margin:0; color:var(--muted)">Artículos y anuncios recientes sobre afiliación y beneficios.</p>
+        <div>
+          <select id="trendFilter" class="form-select form-select-sm" style="width:180px;">
+            <option value="all">Todas</option>
+            <option value="convenios">Convenios</option>
+            <option value="creditos">Créditos</option>
+            <option value="eventos">Eventos</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="trending-grid" id="trendingGrid">
+        <article class="trend-card" data-cat="convenios">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong>Nuevo convenio con farmacia nacional</strong>
+            <span class="trend-badge">Descuento</span>
+          </div>
+          <p style="margin-top:8px; color:var(--muted); font-size:0.95rem;">Afiliados obtienen 15% en medicamentos seleccionados. Vigente hasta 30/11/2025.</p>
+        </article>
+
+        <article class="trend-card" data-cat="creditos">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong>Tasas preferenciales en créditos</strong>
+            <span class="trend-badge">Finanzas</span>
+          </div>
+          <p style="margin-top:8px; color:var(--muted); font-size:0.95rem;">Se abre la nueva convocatoria para créditos a tasas reducidas. Revisa requisitos en la oficina.</p>
+        </article>
+
+        <article class="trend-card" data-cat="eventos">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <strong>Taller de bienestar 2025</strong>
+            <span class="trend-badge">Eventos</span>
+          </div>
+          <p style="margin-top:8px; color:var(--muted); font-size:0.95rem;">Cupos limitados — taller presencial para afiliados y familiares.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+   <!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo y Descripción -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <img src="/img/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+        <p class="text-muted">Somos una empresa comprometida con el bienestar y desarrollo de nuestros usuarios. Proveemos soluciones tecnológicas y servicios personalizados.</p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted footer-link">Inicio</a></li>
+          <li><a href="#" class="text-muted footer-link">Servicios</a></li>
+          <li><a href="#" class="text-muted footer-link">Noticias</a></li>
+          <li><a href="#" class="text-muted footer-link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Síguenos</h5>
+        <div class="social-icons">
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-muted footer-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de Autor -->
+    <div class="text-center mt-4 pt-3">
+      <p class="text-muted small">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Estilos CSS Personalizados -->
+<style>
+  footer {
+    background-color: #212529; /* Fondo oscuro */
+  }
+
+  .footer-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #00bcd4; /* Azul brillante para interacción */
+    padding-left: 10px; /* Desplazamiento suave al pasar el ratón */
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-icon:hover {
+    color: #00bcd4; /* Color de iconos en hover */
+    transform: translateY(-5px); /* Efecto de elevación suave */
+  }
+
+  .text-muted {
+    color: #f8f9fa !important; /* Gris claro para los textos */
+  }
+
+  .text-white {
+    color: white !important; /* Blanco para títulos */
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Efecto de agrandar iconos */
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 992px) {
+    footer .col-md-4 {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 576px) {
+    footer .col-md-4 {
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- Font Awesome (para los iconos sociales) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- ====== Scripts: interactividad mínima (expandir tarjetas, filtro tendencia) ====== -->
+  <script>
+    // Toggle expand on elongated cards
+    document.querySelectorAll('[data-toggle-detail]').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = btn.closest('.elong-card');
+        if (!card) return;
+        card.classList.toggle('expanded');
+        const icon = btn.querySelector('i');
+        if (card.classList.contains('expanded')) icon.classList.replace('bi-chevron-down', 'bi-chevron-up');
+        else icon.classList.replace('bi-chevron-up', 'bi-chevron-down');
+      });
+    });
+
+    // Also enable click on the entire card to toggle (but avoid toggling when clicking links/buttons inside)
+    document.querySelectorAll('.elong-card').forEach(card=>{
+      card.addEventListener('click', (e)=>{
+        if (e.target.closest('button') || e.target.closest('a')) return; // skip if clicked control
+        card.classList.toggle('expanded');
+        const btn = card.querySelector('[data-toggle-detail] i');
+        if (btn) btn.classList.toggle('bi-chevron-up') , btn.classList.toggle('bi-chevron-down');
+      });
+    });
+
+    // Trending filter
+    const filter = document.getElementById('trendFilter');
+    const items = document.querySelectorAll('#trendingGrid .trend-card');
+    filter.addEventListener('change', ()=>{
+      const val = filter.value;
+      items.forEach(it=>{
+        if (val === 'all' || it.dataset.cat === val) it.style.display = '';
+        else it.style.display = 'none';
+      });
+    });
+
+    // Accessibility: keyboard expand with Enter/Space
+    document.querySelectorAll('.elong-card').forEach(card=>{
+      card.addEventListener('keydown', (e)=>{
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          card.classList.toggle('expanded');
+        }
+      });
+    });
+  </script>
+
+  <!-- Bootstrap JS (optional for navbar collapse) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aseconsevi | Trámites</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body { padding-top: 80px; background: #f8f9fc; }
+    /* Tarjetas */
+    .card { border-radius: 1rem; border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform .3s; }
+    .card:hover { transform: translateY(-8px); }
+    .icon-wrap { width: 70px; height: 70px; border-radius: 50%;
+      background: rgba(13,110,253,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 15px; }
+    .icon-wrap i { font-size: 2rem; color: #0d6efd; }
+    /* Timeline */
+    .timeline { list-style:none; padding:0; position:relative; }
+    .timeline::before {
+      content:''; position:absolute; left:50%; top:0; bottom:0;
+      width:4px; background:#0d6efd; transform:translateX(-50%);
+    }
+    .timeline-item { position:relative; width:50%; padding:1rem 2rem; }
+    .timeline-item.left { left:0; text-align:right; }
+    .timeline-item.right { left:50%; }
+    .timeline-item::before {
+      content:''; position:absolute; top:20px; width:20px; height:20px;
+      border-radius:50%; background:#0d6efd; z-index:1;
+    }
+    .timeline-item.left::before { right:-10px; }
+    .timeline-item.right::before { left:-10px; }
+    /* FAQ */
+    .accordion-button:not(.collapsed) { background:#0d6efd; color:#fff; }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="index.html#quienes"><i class="bi bi-people-fill me-1"></i>Quiénes somos</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item active" href="/html/Tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/Afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/Asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+        </ul>
+        <button id="btnTheme" class="btn btn-outline-primary"><i class="bi bi-moon-fill me-1"></i>Modo oscuro</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero con imagen clickeable -->
+  <section class="hero mb-5 text-center">
+    <div class="content">
+      <h1 class="display-5 fw-bold text-dark">Gestión de Trámites</h1>
+      <p class="lead">Accede a tus formularios y procesos más importantes de forma ágil y segura.</p>
+      <!-- Imagen que al tocarse abre modal -->
+      <img src="/img/Servicios Tucán.png" 
+           alt="Banner trámites ASECONSEVI" 
+           class="img-fluid rounded shadow-lg mt-3"
+           style="max-height: 400px; cursor: pointer;"
+           data-bs-toggle="modal" data-bs-target="#bannerModal">
+    </div>
+  </section>
+
+  <!-- Modal para ampliar imagen -->
+  <div class="modal fade" id="bannerModal" tabindex="-1" aria-labelledby="bannerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content bg-transparent border-0">
+        <button type="button" class="btn-close btn-close-white ms-auto me-2 mt-2" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <img src="/img/tramites-banner.jpg" alt="Imagen ampliada" class="img-fluid rounded shadow-lg">
+      </div>
+    </div>
+  </div>
+
+  <!-- Trámites -->
+  <main class="container py-5" id="tramites">
+    <div class="row g-4">
+      <!-- Afiliación -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-4">
+          <div class="icon-wrap"><i class="bi bi-person-plus"></i></div>
+          <h5 class="card-title">Afiliación</h5>
+          <p class="card-text">Únete a ASECONSEVI y comienza a disfrutar de todos los beneficios solidaristas.</p>
+          <a href="/mnt/data/1. FORMULARIO DE AFILIACION.pdf" class="btn btn-primary" target="_blank"><i class="bi bi-download me-1"></i>Descargar formulario</a>
+        </div>
+      </div>
+      <!-- Créditos -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-4">
+          <div class="icon-wrap"><i class="bi bi-cash-coin"></i></div>
+          <h5 class="card-title">Solicitud de Crédito</h5>
+          <p class="card-text">Accede a préstamos solidarios con tasas preferenciales y respaldo institucional.</p>
+          <a href="/mnt/data/7.SOLICITUD DE CREDITO ASECONSEVI.pdf" class="btn btn-primary" target="_blank"><i class="bi bi-download me-1"></i>Descargar formulario</a>
+        </div>
+      </div>
+      <!-- Ahorros -->
+      <div class="col-md-4">
+        <div class="card h-100 text-center p-4">
+          <div class="icon-wrap"><i class="bi bi-piggy-bank"></i></div>
+          <h5 class="card-title">Devolución de Ahorro</h5>
+          <p class="card-text">Solicita retiro parcial o total de tus ahorros voluntarios de forma segura.</p>
+          <a href="/mnt/data/3. FORMULARIO DE DEVOLUCION DE AHORRO.pdf" class="btn btn-primary" target="_blank"><i class="bi bi-download me-1"></i>Descargar formulario</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Timeline -->
+  <section class="container my-5">
+    <h3 class="fw-bold text-primary text-center mb-4"><i class="bi bi-diagram-3 me-2"></i>Proceso General de Trámites</h3>
+    <ul class="timeline">
+      <li class="timeline-item left"><h6>1. Completar formulario</h6><p>Descarga el documento y complétalo con tus datos.</p></li>
+      <li class="timeline-item right"><h6>2. Presentar solicitud</h6><p>Entrega en oficinas o envíalo por correo oficial.</p></li>
+      <li class="timeline-item left"><h6>3. Revisión</h6><p>Nuestro equipo valida la información.</p></li>
+      <li class="timeline-item right"><h6>4. Resolución</h6><p>Se comunica la aprobación y se gestiona el trámite.</p></li>
+    </ul>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container my-5">
+    <h3 class="fw-bold text-primary text-center mb-4"><i class="bi bi-question-circle me-2"></i>Preguntas Frecuentes</h3>
+    <div class="accordion" id="faqAccordion">
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">¿Cuánto tarda un trámite?</button></h2>
+        <div id="faq1" class="accordion-collapse collapse show"><div class="accordion-body">Afiliación (24h), crédito (hasta 5 días hábiles), devolución de ahorro (5 días hábiles).</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">¿Dónde entrego los formularios?</button></h2>
+        <div id="faq2" class="accordion-collapse collapse"><div class="accordion-body">Podés entregarlos en oficinas de ASECONSEVI o enviarlos al correo oficial.</div></div>
+      </div>
+      <div class="accordion-item">
+        <h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq3">¿Qué pasa si falta información?</button></h2>
+        <div id="faq3" class="accordion-collapse collapse"><div class="accordion-body">Te contactaremos para completar lo que falte antes de continuar.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-4 mt-5">
+    <p class="mb-0">© 2025 ASECONSEVI | Asociación Solidarista de COSEVI - Costa Rica</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

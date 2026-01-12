@@ -1,0 +1,229 @@
+/* Tipografía formal: uso 'Georgia' y 'Serif' para texto, y 'Arial' para navbar */
+/* Colores: azul oscuro, gris suave y blanco */
+
+:root {
+  --color-primario: #002855; /* Azul oscuro */
+  --color-secundario: #00509e; /* Azul medio */
+  --color-fondo-claro: #f9f9f9;
+  --color-fondo-oscuro: #121212;
+  --color-texto: #333333;
+  --color-texto-claro: #ffffff;
+  --color-acento: #004080;
+}
+
+/* Reset básico para tipografía */
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background-color: var(--color-fondo-claro);
+  color: var(--color-texto);
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  color: var(--color-primario);
+}
+
+/* Navbar sin iconos y tipografía más formal */
+.navbar .nav-link {
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-primario) !important;
+  padding: 0.5rem 1rem;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active {
+  color: var(--color-secundario) !important;
+  text-decoration: underline;
+}
+
+/* Eliminar íconos en navbar (ocultarlos) */
+.navbar .nav-link i {
+  display: none;
+}
+
+/* Botón modo oscuro */
+#btnTheme {
+  font-family: 'Arial', sans-serif;
+  font-weight: 600;
+  color: var(--color-primario);
+  border-color: var(--color-primario);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#btnTheme:hover {
+  background-color: var(--color-primario);
+  color: var(--color-texto-claro);
+}
+
+/* Hero */
+.hero-section h1 {
+  font-family: Georgia, serif;
+  font-weight: 700;
+  font-size: 3rem;
+  color: var(--color-texto-claro);
+}
+
+.hero-section p.lead {
+  font-family: Georgia, serif;
+  font-size: 1.25rem;
+  color: var(--color-texto-claro);
+}
+
+/* Botones primarios */
+.btn-primary {
+  background-color: var(--color-primario);
+  border-color: var(--color-primario);
+  font-weight: 600;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-secundario);
+  border-color: var(--color-secundario);
+}
+
+/* Secciones */
+section {
+  font-family: Georgia, serif;
+}
+
+section h2 {
+  border-bottom: 3px solid var(--color-primario);
+  padding-bottom: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Cards de servicios */
+.card {
+  border-radius: 12px;
+  border: 1.5px solid var(--color-primario);
+  font-family: Georgia, serif;
+  color: var(--color-texto);
+}
+
+.card .card-title {
+  color: var(--color-primario);
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+.card .card-body {
+  padding: 1.5rem;
+}
+
+/* Enlaces en cards */
+.card a.btn-outline-primary {
+  font-weight: 600;
+  border-color: var(--color-primario);
+  color: var(--color-primario);
+}
+
+.card a.btn-outline-primary:hover {
+  background-color: var(--color-primario);
+  color: var(--color-texto-claro);
+}
+
+/* Formulario */
+form label {
+  font-weight: 600;
+  color: var(--color-primario);
+  font-family: 'Arial', sans-serif;
+}
+
+form input,
+form select,
+form textarea {
+  border-radius: 6px;
+  border: 1.5px solid #ccc;
+  font-family: Georgia, serif;
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus {
+  border-color: var(--color-primario);
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 40, 85, 0.3);
+}
+
+/* Footer */
+footer {
+  font-family: Georgia, serif;
+  background-color: #0a1d3d;
+  color: var(--color-texto-claro);
+}
+
+footer h5 {
+  font-family: 'Arial', sans-serif;
+  font-weight: 700;
+  color: var(--color-texto-claro);
+}
+
+footer a {
+  color: var(--color-texto-claro);
+  text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+  color: var(--color-secundario);
+}
+
+/* Links sociales */
+footer .d-flex a {
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+
+footer .d-flex a:hover,
+footer .d-flex a:focus {
+  color: var(--color-secundario);
+}
+
+/* Modo oscuro (opcional) */
+[data-theme="dark"] {
+  --color-fondo-claro: var(--color-fondo-oscuro);
+  --color-texto: #cccccc;
+  --color-primario: #8ab4f8;
+  --color-secundario: #aecbfa;
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto);
+}
+
+[data-theme="dark"] body {
+  background-color: var(--color-fondo-oscuro);
+  color: var(--color-texto);
+}
+
+[data-theme="dark"] .navbar {
+  background-color: #001b33 !important;
+}
+
+[data-theme="dark"] section {
+  background-color: #001f4d;
+  color: var(--color-texto);
+}
+
+[data-theme="dark"] footer {
+  background-color: #000c1f;
+}
+
+/* Quitar outline a los botones pero mantener accesibilidad */
+button:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--color-secundario);
+  outline-offset: 2px;
+}

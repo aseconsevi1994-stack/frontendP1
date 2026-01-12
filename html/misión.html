@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aseconsevi | Misión, Visión y Valores</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Open Sans', sans-serif; background: #f4f6f9; color: #333; padding-top: 80px; }
+    h1,h2,h3,h4,h5 { font-family: 'Merriweather', serif; }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      background: url('/img/banner-mision.jpg') center/cover no-repeat;
+      height: 50vh;
+      display: flex; justify-content: center; align-items: center;
+      color: white; text-align: center;
+    }
+    .hero::before {
+      content: "";
+      position: absolute; inset: 0;
+      background: linear-gradient(rgba(0,51,102,0.8), rgba(0,51,102,0.8));
+    }
+    .hero h1 { position: relative; font-size: 3rem; z-index: 1; }
+
+    /* Sección Misión y Visión */
+    .section-box {
+      background: white;
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .section-box:hover { transform: translateY(-6px); }
+    .section-box i { font-size: 3rem; color: #0d6efd; margin-bottom: 1rem; }
+
+    /* Valores */
+    .value-card { perspective: 1000px; }
+    .value-inner {
+      position: relative;
+      width: 100%; height: 200px;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .value-card:hover .value-inner { transform: rotateY(180deg); }
+    .value-front, .value-back {
+      position: absolute; width: 100%; height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px; padding: 1.5rem;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+    .value-front {
+      background: white;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+    }
+    .value-front i { font-size: 2rem; color: #0d6efd; margin-bottom: 0.5rem; }
+    .value-back {
+      background: #003366; color: white;
+      transform: rotateY(180deg);
+      display: flex; align-items: center; justify-content: center;
+    }
+
+    /* Compromiso */
+    .commitment {
+      background: #003366;
+      color: white;
+      border-radius: 12px;
+      padding: 3rem 2rem;
+    }
+    .commitment i {
+      font-size: 2rem; margin-right: 10px; color: #0d6efd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar con menú desplegable -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+
+          <!-- Quiénes Somos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-people-fill me-1"></i>Quiénes somos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
+              <li><a class="dropdown-item" href="/html/historia.html">Historia</a></li>
+              <li><a class="dropdown-item" href="/html/misión.html">Misión, Visión y Valores</a></li>
+              <li><a class="dropdown-item" href="/html/Junta.directiva.html">Junta Directiva</a></li>
+              <li><a class="dropdown-item" href="/html/comite.html">Comités</a></li>
+              <li><a class="dropdown-item" href="/html/contactos.html">Contactos</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item" href="/html/tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/admin/login.html"><i class="bi bi-shield-lock-fill me-1"></i>Admin</a></li>
+        </ul>
+        <button id="btnTheme" class="btn btn-outline-primary"><i class="bi bi-moon-fill me-1"></i>Modo oscuro</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Misión, Visión y Valores</h1>
+  </section>
+
+  <main class="container py-5">
+
+    <!-- Misión y Visión -->
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="section-box">
+          <i class="bi bi-bullseye"></i>
+          <h3 class="fw-bold">Misión</h3>
+          <p>Garantizar una administración responsable y transparente de los recursos de los asociados, generando opciones socioeconómicas de excelencia, que permitan impulsar solidariamente el desarrollo integral del afiliado y su núcleo familiar.</p>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="section-box">
+          <i class="bi bi-eye"></i>
+          <h3 class="fw-bold">Visión</h3>
+          <p>Ser una Asociación Solidarista que promueva la maximización del uso de los recursos, creación de oportunidades de desarrollo y servicios de calidad, en procura del crecimiento integral de los asociados.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <h3 class="fw-bold text-center mb-4">Nuestros Valores</h3>
+    <div class="row g-4 mb-5">
+      <!-- Excelencia -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-star-fill"></i><h5>Excelencia</h5></div>
+            <div class="value-back"><p>Ofrecer siempre las mejores opciones y un servicio de calidad ajustado a las necesidades de los asociados.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Igualdad -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-people-fill"></i><h5>Igualdad</h5></div>
+            <div class="value-back"><p>Respetamos los derechos y obligaciones de cada uno de los asociados, sin distinción.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Lealtad -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-heart-fill"></i><h5>Lealtad</h5></div>
+            <div class="value-back"><p>Compromiso absoluto con los objetivos de la asociación y el bienestar colectivo.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Responsabilidad -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-check2-circle"></i><h5>Responsabilidad</h5></div>
+            <div class="value-back"><p>Decisiones conscientes y cumplimiento eficaz de los compromisos asumidos.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Servicio -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-hand-thumbs-up"></i><h5>Servicio</h5></div>
+            <div class="value-back"><p>Atención eficiente y cordial a los asociados para solventar sus necesidades.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Solidarismo -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-people"></i><h5>Solidarismo</h5></div>
+            <div class="value-back"><p>Identificación plena con las necesidades de los asociados, promoviendo su bienestar.</p></div>
+          </div>
+        </div>
+      </div>
+      <!-- Transparencia -->
+      <div class="col-md-4">
+        <div class="value-card">
+          <div class="value-inner">
+            <div class="value-front"><i class="bi bi-shield-check"></i><h5>Transparencia</h5></div>
+            <div class="value-back"><p>Gestión clara y verificable para garantizar el buen manejo del patrimonio de los asociados.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nuestro compromiso -->
+    <section class="commitment mt-5">
+      <h3 class="fw-bold text-center mb-4">Nuestro Compromiso con los Asociados</h3>
+      <div class="row g-3">
+        <div class="col-md-6"><p><i class="bi bi-check-circle-fill"></i> Transparencia en la administración de los recursos.</p></div>
+        <div class="col-md-6"><p><i class="bi bi-check-circle-fill"></i> Promoción de oportunidades de desarrollo socioeconómico.</p></div>
+        <div class="col-md-6"><p><i class="bi bi-check-circle-fill"></i> Respeto y trato igualitario para todos los asociados.</p></div>
+        <div class="col-md-6"><p><i class="bi bi-check-circle-fill"></i> Fomento de la solidaridad y apoyo mutuo.</p></div>
+      </div>
+    </section>
+
+  </main>
+<!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo y Descripción -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <img src="/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+        <p class="text-muted">Somos una empresa comprometida con el bienestar y desarrollo de nuestros usuarios. Proveemos soluciones tecnológicas y servicios personalizados.</p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted footer-link">Inicio</a></li>
+          <li><a href="#" class="text-muted footer-link">Servicios</a></li>
+          <li><a href="#" class="text-muted footer-link">Noticias</a></li>
+          <li><a href="#" class="text-muted footer-link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Síguenos</h5>
+        <div class="social-icons">
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-muted footer-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de Autor -->
+    <div class="text-center mt-4 pt-3">
+      <p class="text-muted small">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Estilos CSS Personalizados -->
+<style>
+  footer {
+    background-color: #212529; /* Fondo oscuro */
+  }
+
+  .footer-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #00bcd4; /* Azul brillante para interacción */
+    padding-left: 10px; /* Desplazamiento suave al pasar el ratón */
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-icon:hover {
+    color: #00bcd4; /* Color de iconos en hover */
+    transform: translateY(-5px); /* Efecto de elevación suave */
+  }
+
+  .text-muted {
+    color: #f8f9fa !important; /* Gris claro para los textos */
+  }
+
+  .text-white {
+    color: white !important; /* Blanco para títulos */
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Efecto de agrandar iconos */
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 992px) {
+    footer .col-md-4 {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 576px) {
+    footer .col-md-4 {
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- Font Awesome (para los iconos sociales) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.getElementById('btnTheme').addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+  </script>
+</body>
+</html>

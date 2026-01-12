@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aseconsevi | Asesoría Legal</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --brand: #0d3b66;
+      --accent: #1e6091;
+      --light-bg: #f8f9fa;
+      --text-muted: #6c757d;
+    }
+
+    body {
+      padding-top: 80px;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--light-bg);
+      color: #212529;
+    }
+
+    /* Navbar */
+    .navbar {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    /* Page header */
+    .page-header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: white;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--brand);
+    }
+    .page-header p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--text-muted);
+    }
+
+    /* Cards */
+    .info-card {
+      background: #fff;
+      border: 1px solid #dee2e6;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .info-card h3 {
+      font-size: 1.25rem;
+      color: var(--brand);
+      margin-bottom: .5rem;
+    }
+    .info-card p {
+      margin-bottom: 0;
+      color: var(--text-muted);
+    }
+
+    /* FAQ */
+    .accordion-button:not(.collapsed) {
+      background-color: var(--brand);
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      background: #212529;
+      color: #adb5bd;
+      padding: 3rem 1rem;
+      margin-top: 3rem;
+    }
+    footer h5 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+    footer a {
+      color: #adb5bd;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-white fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#quienes"><i class="bi bi-people-fill me-1"></i>Quiénes somos</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown"><i class="bi bi-briefcase-fill me-1"></i>Servicios</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Trámites</a></li>
+              <li><a class="dropdown-item" href="#">Convenios</a></li>
+              <li><a class="dropdown-item" href="#">Afiliación</a></li>
+              <li><a class="dropdown-item" href="#">Créditos</a></li>
+              <li><a class="dropdown-item active" href="#">Asesoría Legal</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="/index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <section class="page-header">
+    <h1>Asesoría Legal</h1>
+    <p>Orientación para nuestros afiliados en materia de derechos, estatutos y reglamentos que rigen la Asociación Solidarista.</p>
+  </section>
+
+  <!-- Main content -->
+  <main class="container my-5">
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+
+        <!-- Info cards -->
+        <div class="info-card">
+          <h3><i class="bi bi-shield-check me-2"></i>Derechos y obligaciones</h3>
+          <p>Brindamos información clara sobre los deberes y beneficios que tienen los asociados bajo la Ley de Asociaciones Solidaristas.</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="bi bi-journal-text me-2"></i>Interpretación normativa</h3>
+          <p>Apoyo en la interpretación de la Ley 6970 y de los reglamentos internos que regulan los diferentes beneficios de la Asociación.</p>
+        </div>
+
+        <div class="info-card">
+          <h3><i class="bi bi-people-fill me-2"></i>Orientación en reglamentos</h3>
+          <p>Información sobre reglamentos relacionados con ahorro, beneficios sociales y excedentes, para garantizar su uso adecuado.</p>
+        </div>
+
+        <!-- FAQ -->
+        <h2 class="mt-5 mb-3" style="color: var(--brand);">Preguntas frecuentes</h2>
+        <div class="accordion" id="faqAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="q1">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a1">
+                ¿Qué cubre la asesoría legal?
+              </button>
+            </h2>
+            <div id="a1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">La asesoría legal cubre temas relacionados con estatutos, derechos de los asociados y aplicación de reglamentos internos.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="q2">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a2">
+                ¿Puedo recibir representación legal en un proceso externo?
+              </button>
+            </h2>
+            <div id="a2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">No. La asesoría es de carácter interno y está enfocada en asuntos relacionados con la Asociación y sus beneficios.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="q3">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#a3">
+                ¿Dónde puedo consultar los estatutos?
+              </button>
+            </h2>
+            <div id="a3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">Los estatutos están disponibles en la oficina de ASECONSEVI y forman parte de la documentación que recibe cada afiliado.</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <img src="/img/Logo.png" alt="Logo" style="width:120px;" class="mb-3">
+          <p>ASECONSEVI · Asociación Solidarista de Empleados del COSEVI</p>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Enlaces rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Noticias</a></li>
+            <li><a href="#">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-3">
+          <h5>Redes sociales</h5>
+          <a href="#"><i class="bi bi-facebook me-2"></i></a>
+          <a href="#"><i class="bi bi-instagram me-2"></i></a>
+          <a href="#"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <small>&copy; 2025 ASECONSEVI. Todos los derechos reservados.</small>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

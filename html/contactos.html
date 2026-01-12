@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ASECONSEVI | Contactos</title>
+  <link href="/css/styles.css" rel="stylesheet" />
+  <!-- Bootstrap + Icons + AOS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root{
+      --brand-1:#002855;
+      --brand-2:#0d6efd;
+      --accent:#ffc107;
+      --glass: rgba(255,255,255,0.82);
+    }
+    body{
+      margin:0;
+      font-family: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: linear-gradient(180deg,#eef3fb,#e8f1fb 40%);
+      color:#233243;
+      padding-top:76px;
+    }
+
+    /* NAV */
+    .navbar-brand img{ width:46px; height:46px; object-fit:cover; }
+
+    /* HERO */
+    .hero{
+      background: linear-gradient(135deg,var(--brand-1),var(--brand-2));
+      color:white;
+      padding:56px 1rem;
+      text-align:center;
+      box-shadow: 0 8px 30px rgba(13,40,80,0.18);
+      border-bottom-left-radius:14px;
+      border-bottom-right-radius:14px;
+    }
+    .hero h1{ font-family:'Playfair Display', serif; font-size:2.6rem; margin-bottom:8px; }
+    .hero p{ opacity:0.95; max-width:880px; margin:0 auto; }
+
+    /* Quick contact flips */
+    .grid-contact{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:18px;
+      margin-top:22px;
+    }
+    .flip{ perspective:1100px; }
+    .flip-inner{
+      position:relative; width:100%; height:220px; transition:transform .72s; transform-style:preserve-3d;
+      border-radius:14px; overflow:hidden;
+    }
+    .flip:hover .flip-inner, .flip-inner.keyboard-flip { transform: rotateY(180deg); }
+    .flip-face{
+      position:absolute; inset:0; border-radius:14px; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      padding:18px; backface-visibility:hidden; -webkit-backface-visibility:hidden;
+      box-shadow: 0 8px 24px rgba(10,30,60,0.06);
+    }
+    .flip-front{
+      background: var(--glass); color:var(--brand-1); border:1px solid rgba(255,255,255,0.6); gap:8px;
+    }
+    .flip-front i{ font-size:40px; color:var(--brand-2); }
+    .flip-back{
+      background: linear-gradient(135deg,var(--brand-2),#004a99);
+      color:white; transform:rotateY(180deg); text-align:center; gap:8px;
+    }
+    .flip-back a.btn{ margin-top:8px; border-radius:10px; padding:6px 12px; }
+
+    /* Team cards */
+    .team-grid{ display:grid; gap:22px; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); margin-top:22px; }
+    .team-card{
+      background: linear-gradient(180deg,#fff,#f7fbff);
+      border-radius:14px; padding:18px; text-align:center; position:relative;
+      box-shadow:0 10px 30px rgba(30,60,100,0.06); overflow:visible;
+      transition: transform .28s, box-shadow .28s;
+    }
+    .team-card:hover{ transform: translateY(-8px); box-shadow:0 18px 44px rgba(20,40,80,0.12); }
+    .avatar{
+      width:120px;height:120px;border-radius:50%; object-fit:cover; margin-top:-64px; border:5px solid #fff;
+      box-shadow:0 8px 22px rgba(0,0,0,0.12); background:#ddd;
+    }
+    .team-card h5{ margin-top:10px; font-weight:700; color:var(--brand-1); }
+    .team-card p.role{ color:var(--brand-2); font-weight:600; margin:6px 0; }
+    .team-actions a, .team-actions button{ margin:6px; text-decoration:none; }
+
+    /* Payments */
+    .payments{
+      background: linear-gradient(180deg,#ffffff,#fcfeff);
+      border-radius:14px; padding:22px; box-shadow:0 12px 30px rgba(10,30,60,0.06);
+      margin-top:20px;
+    }
+    .payments h4{ color:var(--brand-1); font-weight:700; }
+    .account-line{ display:flex; gap:12px; align-items:center; justify-content:space-between; padding:8px 6px; border-radius:8px; }
+    .account-line .label{ font-weight:600; color:#222; }
+    .account-line .value{ font-family:monospace; color:#0b2a4a; }
+    .account-actions button{ min-width:120px; }
+
+    /* Map + QR layout */
+    .map-qr{ display:grid; grid-template-columns:1fr 340px; gap:22px; align-items:start; margin-top:28px; }
+    @media(max-width:991px){ .map-qr{ grid-template-columns:1fr; } }
+    .qr-card{ background:white; padding:18px; border-radius:12px; text-align:center; box-shadow:0 8px 24px rgba(0,0,0,0.08); }
+    .qr-card img{ width:190px; height:190px; object-fit:cover; border-radius:12px; }
+
+    /* Buttons */
+    .btn-round{ border-radius:999px; padding:8px 14px; font-weight:600; box-shadow:0 8px 20px rgba(0,0,0,0.08); }
+    .section-title{ text-align:center; color:var(--brand-1); margin-bottom:8px; margin-top:4px; font-weight:700; }
+
+    /* Toast container */
+    .toast-container { position: fixed; top: 86px; right: 20px; z-index: 1080; }
+
+    footer{ margin-top:42px; background:var(--brand-1); color:#fff; padding:18px; text-align:center; border-top-left-radius:8px; border-top-right-radius:8px; }
+    .muted{ color:#6b7b8f; font-size:0.95rem; }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar con menú desplegable -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/index.html">
+        <img src="/img/Logo.png" alt="Logo ASECONSEVI" class="me-2 rounded-circle" style="width:50px; height:50px;" />
+        <span class="fw-bold fs-4 text-primary">ASECONSEVI</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div id="navbarContent" class="collapse navbar-collapse justify-content-end">
+        <ul class="navbar-nav me-3 mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/index.html#inicio"><i class="bi bi-house-door-fill me-1"></i>Inicio</a></li>
+
+          <!-- Quiénes Somos -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="quienesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-people-fill me-1"></i>Quiénes somos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="quienesDropdown">
+              <li><a class="dropdown-item" href="/html/historia.html">Historia</a></li>
+              <li><a class="dropdown-item" href="/html/misión.html">Misión, Visión y Valores</a></li>
+              <li><a class="dropdown-item" href="/html/Junta.directiva.html">Junta Directiva</a></li>
+              <li><a class="dropdown-item" href="/html/comite.html">Comités</a></li>
+              <li><a class="dropdown-item" href="/html/contactos.html">Contactos</a></li>
+            </ul>
+          </li>
+
+          <!-- Servicios -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="serviciosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi bi-briefcase-fill me-1"></i>Servicios
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="serviciosDropdown">
+              <li><a class="dropdown-item" href="/html/Tramites-servicios.html">Trámites</a></li>
+              <li><a class="dropdown-item" href="/html/convenios-servicios.html">Convenios</a></li>
+              <li><a class="dropdown-item" href="/html/afiliacion-servicios.html">Afiliación</a></li>
+              <li><a class="dropdown-item" href="/html/creditos-servicios.html">Créditos</a></li>
+              <li><a class="dropdown-item" href="/html/asesoria-servicios.html">Asesoría Legal</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="index.html#noticias"><i class="bi bi-newspaper me-1"></i>Noticias</a></li>
+          <li class="nav-item"><a class="nav-link text-danger fw-bold" href="/admin/login.html"><i class="bi bi-shield-lock-fill me-1"></i>Admin</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+
+
+  <!-- HERO -->
+  <header class="hero" data-aos="fade-down">
+    <div class="container">
+      <h1>Contáctanos</h1>
+      <p class="muted">Líneas directas, correos administrativos, SINPE y nuestra ubicación. Copia fácilmente cuentas y correos desde aquí.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Quick contact flips -->
+    <section data-aos="fade-up" class="mt-4">
+      <h4 class="section-title">Formas rápidas de contacto</h4>
+      <div class="grid-contact">
+        <!-- Teléfono -->
+        <div class="flip" tabindex="0" aria-label="Teléfono">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <i class="bi bi-telephone-fill"></i>
+              <div><strong>Teléfono</strong></div>
+              <small class="muted">Horario: Lun - Vie, 7:00 am- 4:00 pm</small>
+            </div>
+            <div class="flip-face flip-back">
+              <h5>Llámanos</h5>
+              <p class="fs-6">+506 2222-3333</p>
+              <a class="btn btn-light btn-sm" href="tel:+50622223333">Marcar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Correo general -->
+        <div class="flip" tabindex="0" aria-label="Correo general">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <i class="bi bi-envelope-fill"></i>
+              <div><strong>Correo</strong></div>
+              <small class="muted">Respues rápidos</small>
+            </div>
+            <div class="flip-face flip-back">
+              <h5>Escríbenos</h5>
+              <p class="fs-6">info@aseconsevi.cr</p>
+              <a class="btn btn-light btn-sm" href="mailto:info@aseconsevi.cr">Enviar correo</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- WhatsApp -->
+        <div class="flip" tabindex="0" aria-label="WhatsApp">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <i class="bi bi-whatsapp"></i>
+              <div><strong>WhatsApp</strong></div>
+              <small class="muted">Atención rápida</small>
+            </div>
+            <div class="flip-face flip-back">
+              <h5>Chatea</h5>
+              <p class="fs-6">+506 6046-5668 / Gerencia  </p>
+              <p class="fs-6">+506 8762-8531 / Cobros y convenios </p>
+              <p class="fs-6">+506 7030-9017/ Creditos y pago </p>
+              <a class="btn btn-light btn-sm" href="https://wa.me/50688887777" target="_blank" rel="noopener">Abrir WhatsApp</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dirección -->
+        <div class="flip" tabindex="0" aria-label="Dirección">
+          <div class="flip-inner">
+            <div class="flip-face flip-front">
+              <i class="bi bi-geo-alt-fill"></i>
+              <div><strong>Dirección</strong></div>
+              <small class="muted">Visítanos</small>
+            </div>
+            <div class="flip-face flip-back">
+              <h5>Oficinas COSEVI</h5>
+              <p class="fs-6">San José, Costa Rica</p>
+              <a class="btn btn-light btn-sm" href="https://maps.google.com/?q=COSEVI+San+Jose+Costa+Rica" target="_blank" rel="noopener">Ver en Maps</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Administrativos -->
+    <section data-aos="fade-up" class="mt-5">
+      <h4 class="section-title">Administrativos principales</h4>
+      <p class="text-center muted mb-3">Contacta al personal encargado según la gestión</p>
+
+      <div class="team-grid">
+        <!-- Marianela -->
+        <div class="team-card" data-aos="flip-left">
+          <img class="avatar" src="https://ui-avatars.com/api/?name=Marianela+Rodriguez&background=002855&color=fff&size=256" alt="Marianela">
+          <h5>Marianela</h5>
+          <p class="role">Gerencia</p>
+          <p class="muted mb-2">gerencia@aseconsevi.co.cr</p>
+          <div class="team-actions">
+            <a class="btn btn-primary btn-round" href="mailto:gerencia@aseconsevi.co.cr"><i class="bi bi-envelope me-1"></i>Email</a>
+            <button class="btn btn-outline-secondary btn-round copy-email" data-email="gerencia@aseconsevi.co.cr"><i class="bi bi-clipboard me-1"></i>Copiar email</button>
+          </div>
+        </div>
+
+        <!-- Alex Cobros -->
+        <div class="team-card" data-aos="flip-left" data-aos-delay="80">
+          <img class="avatar" src="https://ui-avatars.com/api/?name=Alex&background=004a99&color=fff&size=256" alt="Alex">
+          <h5>Alex</h5>
+          <p class="role">Cobros</p>
+          <p class="muted mb-2">cobros@aseconsevi.co.cr</p>
+          <p class="muted mb-2">convenios@aseconsevi.co.cr</p>
+          <div class="team-actions">
+            <a class="btn btn-primary btn-round" href="mailto:alexcobros@aseconsevi.co.cr"><i class="bi bi-envelope me-1"></i>Email</a>
+            <button class="btn btn-outline-secondary btn-round copy-email" data-email="alexcobros@aseconsevi.co.cr"><i class="bi bi-clipboard me-1"></i>Copiar email</button>
+          </div>
+        </div>
+
+        <!-- Karen Pagos -->
+        <div class="team-card" data-aos="flip-left" data-aos-delay="160">
+          <img class="avatar" src="https://ui-avatars.com/api/?name=Karen&background=0066cc&color=fff&size=256" alt="Karen">
+          <h5>Karen</h5>
+          <p class="role">Pagos</p>
+          <p class="muted mb-2">pagos@aseconsevi.co.cr</p>
+          <div class="team-actions">
+            <a class="btn btn-primary btn-round" href="mailto:karenpagos@aseconsevi.co.cr"><i class="bi bi-envelope me-1"></i>Email</a>
+            <button class="btn btn-outline-secondary btn-round copy-email" data-email="karenpagos@aseconsevi.co.cr"><i class="bi bi-clipboard me-1"></i>Copiar email</button>
+          </div>
+        </div>
+
+        <!-- José Andrés Créditos -->
+        <div class="team-card" data-aos="flip-left" data-aos-delay="240">
+          <img class="avatar" src="https://ui-avatars.com/api/?name=Jose+Andres&background=003366&color=fff&size=256" alt="José Andrés">
+          <h5>José Andrés</h5>
+          <p class="role">Créditos</p>
+          <p class="muted mb-2">creditos@aseconsevi.co.cr</p>
+          <div class="team-actions">
+            <a class="btn btn-primary btn-round" href="mailto:joseandrescreditos@aseconsevi.co.cr"><i class="bi bi-envelope me-1"></i>Email</a>
+            <button class="btn btn-outline-secondary btn-round copy-email" data-email="joseandrescreditos@aseconsevi.co.cr"><i class="bi bi-clipboard me-1"></i>Copiar email</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pagos / Cuentas -->
+    <section data-aos="fade-up" class="mt-5">
+      <h4 class="section-title">Información para pagos</h4>
+      <div class="payments">
+        <p><strong>ESTIMADO ASOCIADO:</strong> Debido a los cambios solicitados por la <strong>SUGEF</strong>, les brindamos nuestras cuentas y SINPE para realizar los diferentes pagos:</p>
+
+        <div class="mt-3">
+          <h5 class="fw-bold text-success"><i class="bi bi-bank2 me-2"></i>Cuentas para cancelación de créditos, cuotas y aportes</h5>
+
+          <div class="account-line my-2">
+            <div>
+              <div class="label">Banco de Costa Rica</div>
+              <div class="value">CR460152010010507220243</div>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline-primary btn-sm copy-account" data-account="CR460152010010507220243">Copiar</button>
+            </div>
+          </div>
+
+          <div class="account-line my-2">
+            <div>
+              <div class="label">Banco Nacional</div>
+              <div class="value">CR65015106011000002048</div>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline-primary btn-sm copy-account" data-account="CR65015106011000002048">Copiar</button>
+            </div>
+          </div>
+
+          <div class="account-line my-2">
+            <div>
+              <div class="label">Banco Popular</div>
+              <div class="value">CR14026001010000018641</div>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline-primary btn-sm copy-account" data-account="CR14026001010000018641">Copiar</button>
+            </div>
+          </div>
+
+          <div class="account-line my-2">
+            <div>
+              <div class="label">Sinpe</div>
+              <div class="value">8762 8531</div>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline-primary btn-sm copy-account" data-account="8762 8531">Copiar</button>
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+        <div>
+          <h5 class="fw-bold text-warning"><i class="bi bi-cart4 me-2"></i>Cuentas para compras y otros</h5>
+
+          <div class="account-line my-2">
+            <div>
+              <div class="label">Banco de Costa Rica (Compras)</div>
+              <div class="value">CR740152010010186411854</div>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline-primary btn-sm copy-account" data-account="CR740152010010186411854">Copiar</button>
+            </div>
+          </div>
+
+          <div class="account-line my-2">
+            <div>
+              <div class="label">Sinpe (Compras)</div>
+              <div class="value">6046 5668</div>
+            </div>
+            <div class="account-actions">
+              <button class="btn btn-outline-primary btn-sm copy-account" data-account="6046 5668">Copiar</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-3">
+          <button class="btn btn-success btn-round" id="copyAllPayments">Copiar todas las cuentas</button>
+          <small class="d-block text-muted mt-2">Al hacer clic se copian todas las cuentas y SINPE para pegarlas en apps o transferencias.</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map + QR -->
+    <section data-aos="fade-up" class="mt-5">
+      <h4 class="section-title">Ubicación & Acceso rapido</h4>
+      <div class="map-qr">
+        <div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3930.073838843479!2d-84.0902975!3d9.9337503!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8fa0e35f7c66b9f5%3A0x6a450a1a2bcb9f9d!2sCOSEVI!5e0!3m2!1ses!2scr!4v1700000000000"
+            width="100%" height="380" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <aside class="qr-card text-center">
+          <h6 class="fw-bold">Ir al sitio oficial de COSEVI</h6>
+          <a class="btn btn-primary btn-round mt-2" href="https://www.csv.go.cr" target="_blank" rel="noopener"><i class="bi bi-box-arrow-up-right me-1"></i> Abrir COSEVI</a>
+        </aside>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast container -->
+  <div class="toast-container position-fixed top-0 end-0 p-3">
+    <div id="copyToast" class="toast align-items-center text-bg-success border-0" role="status" aria-live="polite" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Copiado al portapapeles</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+<footer class="bg-dark text-light py-5">
+  <div class="container">
+    <div class="row">
+      <!-- Logo y Descripción -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <img src="/img/Logo.png" alt="Logo" class="mb-3" style="width: 150px;">
+        <p class="text-muted">Somos una empresa comprometida con el bienestar y desarrollo de nuestros usuarios. Proveemos soluciones tecnológicas y servicios personalizados.</p>
+      </div>
+
+      <!-- Enlaces Rápidos -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Enlaces Rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-muted footer-link">Inicio</a></li>
+          <li><a href="#" class="text-muted footer-link">Servicios</a></li>
+          <li><a href="#" class="text-muted footer-link">Noticias</a></li>
+          <li><a href="#" class="text-muted footer-link">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Redes Sociales -->
+      <div class="col-12 col-md-4 mb-4 mb-md-0">
+        <h5 class="text-white mb-3">Síguenos</h5>
+        <div class="social-icons">
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-muted me-3 footer-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="text-muted footer-icon">
+            <i class="fab fa-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Derechos de Autor -->
+    <div class="text-center mt-4 pt-3">
+      <p class="text-muted small">&copy; 2025 Nombre de la Empresa. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Estilos CSS Personalizados -->
+<style>
+  footer {
+    background-color: #212529; /* Fondo oscuro */
+  }
+
+  .footer-link {
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: #00bcd4; /* Azul brillante para interacción */
+    padding-left: 10px; /* Desplazamiento suave al pasar el ratón */
+  }
+
+  .footer-icon {
+    font-size: 1.5rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-icon:hover {
+    color: #00bcd4; /* Color de iconos en hover */
+    transform: translateY(-5px); /* Efecto de elevación suave */
+  }
+
+  .text-muted {
+    color: #f8f9fa !important; /* Gris claro para los textos */
+  }
+
+  .text-white {
+    color: white !important; /* Blanco para títulos */
+  }
+
+  .social-icons {
+    display: flex;
+    align-items: center;
+  }
+
+  .social-icons a {
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.1); /* Efecto de agrandar iconos */
+  }
+
+  /* Para pantallas grandes */
+  @media (min-width: 992px) {
+    footer .col-md-4 {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  /* Para pantallas pequeñas */
+  @media (max-width: 576px) {
+    footer .col-md-4 {
+      text-align: center;
+    }
+  }
+</style>
+
+<!-- Font Awesome (para los iconos sociales) -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Theme toggle (clásico modo claro/oscuro)
+    const btnTheme = document.getElementById('btnTheme');
+    btnTheme.addEventListener('click', () => {
+      if (document.documentElement.getAttribute('data-theme') === 'light') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        btnTheme.innerHTML = '<i class="bi bi-sun-fill me-1"></i>Modo claro';
+        btnTheme.classList.remove('btn-outline-primary');
+        btnTheme.classList.add('btn-outline-light');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        btnTheme.innerHTML = '<i class="bi bi-moon-fill me-1"></i>Modo oscuro';
+        btnTheme.classList.remove('btn-outline-light');
+        btnTheme.classList.add('btn-outline-primary');
+      }
+    });
+
+    // Bootstrap form validation
+    (() => {
+      'use strict';
+      const forms = document.querySelectorAll('.needs-validation');
+      Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    })();
+
+    // Servicios - filtro simple
+    const filterSelect = document.getElementById('filterServices');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    filterSelect.addEventListener('change', () => {
+      const value = filterSelect.value;
+      serviceCards.forEach(card => {
+        if (value === 'all' || card.dataset.category === value) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 750, once: true, offset: 60 });
+
+    // Toast helper
+    function showToast(message = 'Copiado al portapapeles') {
+      const toastEl = document.getElementById('copyToast');
+      toastEl.querySelector('.toast-body').textContent = message;
+      const t = new bootstrap.Toast(toastEl);
+      t.show();
+    }
+
+    // Copy single email buttons
+    document.querySelectorAll('.copy-email').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const email = btn.dataset.email;
+        if (!email) return;
+        try {
+          await navigator.clipboard.writeText(email);
+          showToast('Email copiado: ' + email);
+        } catch (err) {
+          // fallback
+          prompt('Copiar este email', email);
+        }
+      });
+    });
+
+    // Copy account buttons
+    document.querySelectorAll('.copy-account').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const acc = btn.dataset.account;
+        if (!acc) return;
+        try {
+          await navigator.clipboard.writeText(acc);
+          showToast('Cuenta copiada: ' + acc);
+        } catch (err) {
+          prompt('Copiar esta cuenta', acc);
+        }
+      });
+    });
+
+    // Copy all payments
+    document.getElementById('copyAllPayments').addEventListener('click', async () => {
+      const all = [
+        'CR460152010010507220243 (BCR) — créditos/cuotas/aportes',
+        'CR65015106011000002048 (Banco Nacional)',
+        'CR14026001010000018641 (Banco Popular)',
+        'Sinpe: 8762 8531',
+        'CR740152010010186411854 (BCR - compras)',
+        'Sinpe: 6046 5668'
+      ].join('\\n');
+      try {
+        await navigator.clipboard.writeText(all);
+        showToast('Todas las cuentas copiadas');
+      } catch (err) {
+        prompt('Copiar todas las cuentas', all);
+      }
+    });
+
+    // Keyboard accessibility for flip cards (Enter / Space to flip)
+    document.querySelectorAll('.flip').forEach(el => {
+      el.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          const inner = el.querySelector('.flip-inner');
+          inner.classList.toggle('keyboard-flip');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
